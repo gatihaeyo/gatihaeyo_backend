@@ -8,6 +8,9 @@ enum class UserErrorCode(
     private val message: String
 ) : ErrorProperty {
 
+    ALREADY_USED_NICKNAME(HttpStatus.CONFLICT, "이미 사용된 닉네임"),
+    ALREADY_USED_EMAIL(HttpStatus.CONFLICT, "이미 사용된 이메일"),
+
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "유저를 찾을 수 없음");
 
     override fun getMessage() = message
