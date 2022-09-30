@@ -9,4 +9,9 @@ import java.util.UUID
 interface UserJpaRepository : CrudRepository<UserEntity, UUID> {
 
     fun queryUserEntityById(id: UUID): UserEntity?
+
+    fun existsUserEntityByNickname(nickname: String): Boolean
+
+    fun existsUserEntityByEmail(email: String): Boolean
+
 }

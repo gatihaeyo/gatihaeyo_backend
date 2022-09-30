@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.global.basemodel
+package com.project.gatihaeyo.global
 
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID

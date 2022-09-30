@@ -1,6 +1,6 @@
 package com.project.gatihaeyo.local.user.persistence.model
 
-import com.project.gatihaeyo.global.basemodel.BaseEntity
+import com.project.gatihaeyo.global.BaseEntity
 import org.hibernate.validator.constraints.Length
 import org.jetbrains.annotations.NotNull
 import java.time.LocalDateTime

@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.global.basemodel
+package com.project.gatihaeyo.global
 
 interface GenericMapper<E, D> {
 
