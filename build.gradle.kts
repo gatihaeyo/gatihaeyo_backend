@@ -20,7 +20,9 @@ repositories {
 dependencies {
     implementation("org.mapstruct:mapstruct:1.5.2.Final")
     kapt("org.mapstruct:mapstruct-processor:1.5.2.Final")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("org.springframework.boot:spring-boot-starter-validation:2.7.4")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis:2.7.4")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.4")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("mysql:mysql-connector-java:8.0.30")
@@ -30,6 +32,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     runtimeOnly("mysql:mysql-connector-java")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
 }
