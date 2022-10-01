@@ -1,18 +1,20 @@
 package com.project.gatihaeyo.global.security.token
 
 import com.project.gatihaeyo.global.security.SecurityProperties
-import com.project.gatihaeyo.local.token.persistence.model.RefreshTokenEntity
-import com.project.gatihaeyo.local.token.persistence.repository.RefreshTokenRepository
+import com.project.gatihaeyo.local.token.dto.response.TokenResponse
+import com.project.gatihaeyo.local.token.application.port.CommandRefreshTokenPort
+import com.project.gatihaeyo.local.token.domain.model.RefreshToken
 import com.project.gatihaeyo.local.user.domain.model.Authority
 import io.jsonwebtoken.Header
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.stereotype.Component
-import java.util.*
+import java.util.Date
+import java.util.UUID
 
 @Component
 class JwtGenerator(
-    private val refreshTokenRepository: RefreshTokenRepository,
+    private val commandRefreshTokenPort: CommandRefreshTokenPort,
     private val securityProperties: SecurityProperties
 ) {
 
@@ -35,8 +37,8 @@ class JwtGenerator(
             .setExpiration(Date(System.currentTimeMillis() + securityProperties.accessExpiredTime))
             .compact()
 
-        refreshTokenRepository.save(
-            RefreshTokenEntity(
+        commandRefreshTokenPort.save(
+            RefreshToken(
                 token = token,
                 authority = authority,
                 userId = userId,
@@ -46,4 +48,10 @@ class JwtGenerator(
 
         return token
     }
+
+    fun issuanceToken(userId: UUID, authority: Authority) = TokenResponse(
+        accessToken = accessToken(userId, authority),
+        refreshToken = refreshToken(userId, authority),
+        accessExpiredTime = Date(System.currentTimeMillis() + securityProperties.accessExpiredTime)
+    )
 }

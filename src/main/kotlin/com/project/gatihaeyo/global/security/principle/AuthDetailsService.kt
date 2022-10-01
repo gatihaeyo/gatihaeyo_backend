@@ -1,5 +1,6 @@
 package com.project.gatihaeyo.global.security.principle
 
+import com.project.gatihaeyo.global.security.exception.InvalidTokenException
 import com.project.gatihaeyo.local.user.persistence.repository.UserJpaRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -13,7 +14,7 @@ class AuthDetailsService(
 
     override fun loadUserByUsername(userId: String): UserDetails {
         val id = UUID.fromString(userId)
-        val user = userJpaRepository.queryUserEntityById(id) ?: TODO()
+        val user = userJpaRepository.queryUserEntityById(id) ?: throw InvalidTokenException.EXCEPTION
 
         return AuthDetails(
             userId = id,
