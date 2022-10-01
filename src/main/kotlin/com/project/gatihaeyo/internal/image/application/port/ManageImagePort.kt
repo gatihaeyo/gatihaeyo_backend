@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.external.storage
+package com.project.gatihaeyo.internal.image.application.port
 
 import org.springframework.web.multipart.MultipartFile
 

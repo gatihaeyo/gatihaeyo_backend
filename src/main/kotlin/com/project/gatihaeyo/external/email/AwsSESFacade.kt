@@ -4,6 +4,7 @@ import com.amazonaws.services.simpleemail.AmazonSimpleEmailService
 import com.amazonaws.services.simpleemail.model.Destination
 import com.amazonaws.services.simpleemail.model.SendTemplatedEmailRequest
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.project.gatihaeyo.internal.auth.application.port.SendAuthCodePort
 import org.springframework.stereotype.Component
 
 @Component
@@ -11,7 +12,7 @@ class AwsSESFacade(
     private val amazonSimpleEmailService: AmazonSimpleEmailService,
     private val awsSESProperties: AwsSESProperties,
     private val objectMapper: ObjectMapper
-): SendEmailPort {
+): SendAuthCodePort {
 
     override fun sendAuthCode(code: String, email: String) {
         sendEmail(

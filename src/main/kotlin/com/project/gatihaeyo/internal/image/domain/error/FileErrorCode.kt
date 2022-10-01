@@ -1,5 +1,6 @@
-package com.project.gatihaeyo.global.error
+package com.project.gatihaeyo.internal.image.domain.error
 
+import com.project.gatihaeyo.global.error.ErrorProperty
 import org.springframework.http.HttpStatus
 
 enum class FileErrorCode(
@@ -7,7 +8,7 @@ enum class FileErrorCode(
     private val message: String
 ): ErrorProperty {
 
-    INVALID_EXTENSION(HttpStatus.BAD_REQUEST, "제한된 확장자(jpg, jpeg, png)"),
+    COMPATIBLE_EXTENSION(HttpStatus.BAD_REQUEST, "호환되지 않는 확장자(jpg, jpeg, png)"),
 
     FILE_IO_INTERRUPTED(HttpStatus.INTERNAL_SERVER_ERROR, "파일 입출력 오류");
 
