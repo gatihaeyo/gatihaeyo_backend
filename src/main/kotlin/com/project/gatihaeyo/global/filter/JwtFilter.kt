@@ -1,6 +1,5 @@
 package com.project.gatihaeyo.global.filter
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.project.gatihaeyo.global.security.token.JwtComponent
 import com.project.gatihaeyo.global.security.token.JwtParser
 import org.springframework.security.core.context.SecurityContextHolder
