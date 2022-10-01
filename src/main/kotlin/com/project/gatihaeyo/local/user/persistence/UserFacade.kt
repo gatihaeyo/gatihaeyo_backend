@@ -28,4 +28,10 @@ class UserFacade(
         )
     }
 
+    override fun queryUserByNickname(nickname: String): User? {
+        return userMapper.toDomain(
+            userJpaRepository.queryUserEntityByNickname(nickname)
+        )
+    }
+
 }

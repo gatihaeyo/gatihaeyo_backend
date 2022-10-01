@@ -11,6 +11,8 @@ enum class UserErrorCode(
     ALREADY_USED_NICKNAME(HttpStatus.CONFLICT, "이미 사용된 닉네임"),
     ALREADY_USED_EMAIL(HttpStatus.CONFLICT, "이미 사용된 이메일"),
 
+    DIFFERENT_PASSWORD(HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않음"),
+
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "유저를 찾을 수 없음");
 
     override fun getMessage() = message

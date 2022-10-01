@@ -12,5 +12,13 @@ class User(
 
     val password: String,
 
-    val deleteAt: LocalDateTime?
-)
+    val authority: Authority,
+
+    val profileImagePath: String,
+
+    val deleteAt: LocalDateTime? = null
+) {
+    companion object {
+        val defaultProfile = System.getenv("USER_DEFAULT_PROFILE")!!
+    }
+}

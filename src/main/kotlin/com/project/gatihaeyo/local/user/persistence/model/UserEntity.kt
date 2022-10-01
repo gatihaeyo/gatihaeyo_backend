@@ -34,5 +34,7 @@ class UserEntity(
     @Enumerated(EnumType.STRING)
     val authority: Authority,
 
+    val profileImagePath: String,
+
     val suspendAt: LocalDateTime?
 ) : BaseEntity(id)
