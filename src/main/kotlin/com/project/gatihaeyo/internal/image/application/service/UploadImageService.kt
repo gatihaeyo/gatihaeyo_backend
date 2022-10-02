@@ -12,7 +12,7 @@ class UploadImageService(
 ) {
 
     fun execute(request: UploadImageRequest): String {
-        if (isCompatibleFile(request.image)) {
+        if (!isCompatibleFile(request.image)) {
             throw CompatibleFileException.EXCEPTION
         }
 

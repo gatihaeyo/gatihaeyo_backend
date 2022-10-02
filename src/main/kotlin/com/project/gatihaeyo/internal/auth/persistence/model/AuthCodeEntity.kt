@@ -6,14 +6,14 @@ import org.springframework.data.redis.core.TimeToLive
 import javax.validation.constraints.NotNull
 
 @RedisHash("tb_authcode")
-class AuthCodeEntity(
+data class AuthCodeEntity(
     @Id
-    val email: String,
+    var email: String,
 
     @field:NotNull
-    val code: String,
+    var code: String,
 
     @field:NotNull
     @TimeToLive
-    val expirationTime: Int
+    var expirationTime: Int
 )

@@ -4,6 +4,7 @@ import com.project.gatihaeyo.internal.auth.application.port.CommandAuthCodePort
 import com.project.gatihaeyo.internal.auth.application.port.QueryAuthCodePort
 import com.project.gatihaeyo.internal.auth.domain.model.AuthCode
 import com.project.gatihaeyo.internal.auth.persistence.mapper.AuthCodeMapper
+import com.project.gatihaeyo.internal.auth.persistence.model.AuthCodeEntity
 import com.project.gatihaeyo.internal.auth.persistence.repository.AuthCodeRepository
 import org.springframework.stereotype.Component
 
@@ -20,7 +21,7 @@ class AuthCodeFacade(
     )!!
 
     override fun queryAuthCodeByEmail(email: String) = authCodeMapper.toDomain(
-        authCodeRepository.queryAuthCodeEntityByEmail(email)
+        authCodeRepository.findById(email).orElse(null)
     )
 
 }

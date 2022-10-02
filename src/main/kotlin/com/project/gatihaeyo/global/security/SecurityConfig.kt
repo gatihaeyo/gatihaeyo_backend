@@ -3,6 +3,7 @@ package com.project.gatihaeyo.global.security
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.project.gatihaeyo.global.filter.FilterConfig
 import com.project.gatihaeyo.global.security.token.JwtParser
+import com.project.gatihaeyo.internal.user.domain.model.Authority
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -31,8 +32,20 @@ class SecurityConfig(
             .and()
             .authorizeHttpRequests()
 
-            .antMatchers().permitAll()
-            .antMatchers(HttpMethod.POST, "/login").permitAll()
+            // users
+            .antMatchers(HttpMethod.POST, "/users/login").permitAll()
+            .antMatchers(HttpMethod.POST, "/users/signup").permitAll()
+            .antMatchers(HttpMethod.PUT, "/users/change/password").permitAll()
+            .antMatchers(HttpMethod.GET, "/users/info").hasAnyAuthority(Authority.ROLE_USER.name)
+            .antMatchers(HttpMethod.PUT, "/users/change/info").hasAnyAuthority(Authority.ROLE_USER.name)
+            .antMatchers(HttpMethod.POST, "/users/token/reissue").permitAll()
+
+            // emails
+            .antMatchers(HttpMethod.POST, "/emails").permitAll()
+            .antMatchers(HttpMethod.POST, "/emails/verified").permitAll()
+
+            // images
+            .antMatchers(HttpMethod.POST, "/images").permitAll()
 
             .anyRequest().authenticated()
 

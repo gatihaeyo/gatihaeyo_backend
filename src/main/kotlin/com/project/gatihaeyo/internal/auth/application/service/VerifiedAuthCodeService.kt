@@ -12,7 +12,8 @@ class VerifiedAuthCodeService(
 ) {
 
     fun execute(request: VerifiedAuthCodeRequest) {
-        val authCode = queryAuthCodePort.queryAuthCodeByEmail(request.email) ?: throw UncertifiedEmailException.EXCEPTION
+        val authCode = queryAuthCodePort.queryAuthCodeByEmail(request.email)
+            ?: throw UncertifiedEmailException.EXCEPTION
 
         if(authCode.code != request.code) {
             throw AuthCodeMismatchException.EXCEPTION

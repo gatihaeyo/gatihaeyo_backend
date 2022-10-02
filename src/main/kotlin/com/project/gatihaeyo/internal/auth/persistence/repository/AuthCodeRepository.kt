@@ -6,7 +6,4 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface AuthCodeRepository : CrudRepository<AuthCodeEntity, String> {
-
-    fun queryAuthCodeEntityByEmail(email: String): AuthCodeEntity?
-
 }

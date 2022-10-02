@@ -6,6 +6,7 @@ import com.project.gatihaeyo.internal.auth.dto.request.SendAuthCodeRequest
 import com.project.gatihaeyo.internal.auth.dto.request.VerifiedAuthCodeRequest
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
@@ -20,12 +21,12 @@ class EmailController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun sendAuthCode(@Valid request: SendAuthCodeRequest) {
+    fun sendAuthCode(@Valid @RequestBody request: SendAuthCodeRequest) {
         sendAuthCodeService.execute(request)
     }
 
     @PostMapping("/verified")
-    fun verifiedAuthCode(@Valid request: VerifiedAuthCodeRequest) {
+    fun verifiedAuthCode(@Valid @RequestBody request: VerifiedAuthCodeRequest) {
         verifiedAuthCodeService.execute(request)
     }
 

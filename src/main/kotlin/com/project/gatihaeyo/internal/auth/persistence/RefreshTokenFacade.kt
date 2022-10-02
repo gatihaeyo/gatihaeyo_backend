@@ -15,7 +15,7 @@ class RefreshTokenFacade(
 
     override fun queryRefreshTokenByToken(token: String): RefreshToken? {
         return refreshTokenMapper.toDomain(
-            refreshTokenRepository.queryRefreshTokenEntityByToken(token)
+            refreshTokenRepository.findById(token).orElse(null)
         )
     }
 

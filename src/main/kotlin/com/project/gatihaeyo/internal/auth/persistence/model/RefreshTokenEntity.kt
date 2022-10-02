@@ -8,7 +8,7 @@ import java.util.UUID
 import javax.validation.constraints.NotNull
 
 @RedisHash("tb_token")
-class RefreshTokenEntity(
+data class RefreshTokenEntity(
     @Id
     val token: String,
 
