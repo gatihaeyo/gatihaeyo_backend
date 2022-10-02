@@ -10,7 +10,9 @@ interface UserJpaRepository : CrudRepository<UserEntity, UUID> {
 
     fun queryUserEntityById(id: UUID): UserEntity?
 
-    fun queryUserEntityByNickname(email: String): UserEntity?
+    fun queryUserEntityByNickname(nickname: String): UserEntity?
+
+    fun queryUserEntityByEmail(email: String): UserEntity?
 
     fun existsUserEntityByNickname(nickname: String): Boolean
 

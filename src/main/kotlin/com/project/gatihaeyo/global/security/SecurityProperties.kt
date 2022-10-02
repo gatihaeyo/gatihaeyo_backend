@@ -1,10 +1,10 @@
 package com.project.gatihaeyo.global.security
 
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import java.util.*
 
-@ConfigurationPropertiesScan("spring.security")
+@ConfigurationProperties("spring.security")
 @ConstructorBinding
 class SecurityProperties(
     secretKey: String,

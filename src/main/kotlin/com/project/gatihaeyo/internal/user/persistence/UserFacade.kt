@@ -34,4 +34,18 @@ class UserFacade(
         )
     }
 
+    override fun queryUserByEmail(email: String): User? {
+        return userMapper.toDomain(
+            userJpaRepository.queryUserEntityByEmail(email)
+        )
+    }
+
+    override fun existsUserByEmail(email: String): Boolean {
+        return userJpaRepository.existsUserEntityByEmail(email)
+    }
+
+    override fun existsUserByNickname(nickname: String): Boolean {
+        return userJpaRepository.existsUserEntityByNickname(nickname)
+    }
+
 }

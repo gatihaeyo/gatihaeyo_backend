@@ -1,8 +1,10 @@
 package com.project.gatihaeyo.external.storage
 
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan
+import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.context.properties.ConstructorBinding
 
-@ConfigurationPropertiesScan("cloud.aws.s3")
+@ConfigurationProperties("cloud.aws.s3")
+@ConstructorBinding
 class AwsS3Properties(
     val bucket: String
 )

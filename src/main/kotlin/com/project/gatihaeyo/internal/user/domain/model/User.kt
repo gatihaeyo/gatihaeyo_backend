@@ -21,4 +21,25 @@ class User(
     companion object {
         val defaultProfile = System.getenv("USER_DEFAULT_PROFILE")!!
     }
+
+    fun updatePassword(password: String) = User(
+        id = this.id,
+        nickname = this.nickname,
+        email = this.email,
+        password = password,
+        authority = this.authority,
+        profileImagePath = this.profileImagePath,
+        deleteAt = this.deleteAt
+    )
+
+    fun updateInfo(nickname: String?, profileImagePath: String?) = User(
+        id = this.id,
+        nickname = nickname ?: this.nickname,
+        email = this.email,
+        password = this.password,
+        authority = this.authority,
+        profileImagePath = profileImagePath ?: this.profileImagePath,
+        deleteAt = this.deleteAt
+    )
+
 }

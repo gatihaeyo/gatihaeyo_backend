@@ -4,13 +4,18 @@ import com.project.gatihaeyo.internal.user.dto.request.LoginRequest
 import com.project.gatihaeyo.internal.user.dto.request.SignUpRequest
 import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
 import com.project.gatihaeyo.internal.auth.application.service.ReissueTokenService
+import com.project.gatihaeyo.internal.user.application.service.ChangeInfoService
+import com.project.gatihaeyo.internal.user.application.service.ChangePasswordService
 import com.project.gatihaeyo.internal.user.application.service.LoginService
 import com.project.gatihaeyo.internal.user.application.service.SignUpService
 import com.project.gatihaeyo.internal.user.application.service.UserInfoService
+import com.project.gatihaeyo.internal.user.dto.request.ChangeInfoRequest
+import com.project.gatihaeyo.internal.user.dto.request.ChangePasswordRequest
 import com.project.gatihaeyo.internal.user.dto.response.UserInfoResponse
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
@@ -24,7 +29,9 @@ class UserController(
     private val signUpService: SignUpService,
     private val loginService: LoginService,
     private val reissueTokenService: ReissueTokenService,
-    private val userInfoService: UserInfoService
+    private val userInfoService: UserInfoService,
+    private val changePasswordService: ChangePasswordService,
+    private val changeInfoService: ChangeInfoService
 ) {
 
     @PostMapping("/signup")
@@ -47,6 +54,18 @@ class UserController(
     @GetMapping("/info")
     fun userInfo(): UserInfoResponse {
         return userInfoService.execute()
+    }
+
+    @PutMapping("/change/password")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun changePassword(@Valid @RequestBody request: ChangePasswordRequest) {
+        changePasswordService.execute(request)
+    }
+
+    @PutMapping("/change/info")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun changeInfo(@Valid @RequestBody request: ChangeInfoRequest) {
+        changeInfoService.execute(request)
     }
 
 }
