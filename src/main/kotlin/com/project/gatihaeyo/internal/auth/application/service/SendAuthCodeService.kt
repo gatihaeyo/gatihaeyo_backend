@@ -17,10 +17,10 @@ class SendAuthCodeService(
             AuthCode(request.email)
         )
 
-//        sendAuthCodePort.sendAuthCode(
-//            email = authCode.email,
-//            code = authCode.code
-//        )
+        sendAuthCodePort.sendAuthCode(
+            email = authCode.email,
+            code = authCode.code
+        )
     }
 
 }
