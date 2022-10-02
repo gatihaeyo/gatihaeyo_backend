@@ -39,6 +39,7 @@ class UserController(
     }
 
     @PostMapping("/token/reissue")
+    @ResponseStatus(HttpStatus.CREATED)
     fun reissue(@RequestHeader("RefreshToken") request: String): TokenResponse {
         return reissueTokenService.execute(request)
     }

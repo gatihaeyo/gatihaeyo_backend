@@ -8,9 +8,9 @@ enum class UserErrorCode(
     private val message: String
 ) : ErrorProperty {
 
-    DIFFERENT_PASSWORD(HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않음"),
+    DIFFERENT_PASSWORD(HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않습니다."),
 
-    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "유저를 찾을 수 없음");
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "유저를 찾을 수 없습니다.");
 
     override fun getMessage() = message
 

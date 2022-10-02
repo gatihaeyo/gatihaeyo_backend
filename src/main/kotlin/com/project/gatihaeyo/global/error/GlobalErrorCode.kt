@@ -7,11 +7,11 @@ enum class GlobalErrorCode(
     private val message: String
 ) : ErrorProperty {
 
-    BAD_REQUEST(HttpStatus.BAD_REQUEST, "잘못된 요청"),
+    BAD_REQUEST(HttpStatus.BAD_REQUEST, "잘못된 요청입니다."),
 
-    METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "허용되지 않은 HTTP Method"),
+    METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "허용되지 않은 HTTP Method 입니다."),
 
-    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 오류 발생");
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 오류가 발생했습니다.");
 
     override fun getMessage() = message
 

@@ -15,6 +15,10 @@ data class SignUpRequest(
     val email: String,
 
     @field:NotBlank
+    @field:Length(min = 6, max = 6)
+    val code: String,
+
+    @field:NotBlank
     @field:Length(min = 8, max = 20)
     val password: String
 )
