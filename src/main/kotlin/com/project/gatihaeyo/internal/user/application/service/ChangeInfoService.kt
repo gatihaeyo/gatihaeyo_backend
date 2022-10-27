@@ -19,7 +19,10 @@ class ChangeInfoService(
         val user = queryUserPort.queryUserById(id) ?: throw UserNotFoundException.EXCEPTION
 
         commandUserPort.save(
-            user.updateInfo(request.nickname, request.profileImagePath)
+            user.copy(
+                nickname = request.nickname ?: user.nickname,
+                profileImagePath = request.profileImagePath ?: user.profileImagePath
+            )
         )
     }
 

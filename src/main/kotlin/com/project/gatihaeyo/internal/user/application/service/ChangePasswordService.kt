@@ -30,8 +30,8 @@ class ChangePasswordService(
         }
 
         commandUserPort.save(
-            user.updatePassword(
-                securityService.encode(request.newPassword)
+            user.copy(
+                password = securityService.encode(request.newPassword)
             )
         )
     }
