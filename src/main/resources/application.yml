@@ -31,6 +31,10 @@ spring:
     access-exp: ${ACCESS_EXP:180}
     refresh-exp: ${REFRESH_EXP:180}
 
+open-api:
+  league-of-legend: ${LOL_APIKEY}
+  battle-ground: ${PUBG_APIKEY}
+
 cloud:
   aws:
     credentials:
