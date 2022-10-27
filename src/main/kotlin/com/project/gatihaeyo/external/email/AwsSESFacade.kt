@@ -16,7 +16,7 @@ class AwsSESFacade(
 
     override fun sendAuthCode(code: String, email: String) {
         sendEmail(
-            template = "Onpost",
+            template = "gatihaeyoCodeTemplate",
             templateData = mapOf(Pair("code", code)),
             email
         )
