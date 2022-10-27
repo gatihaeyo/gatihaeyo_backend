@@ -1,16 +1,23 @@
 package com.project.gatihaeyo.internal.presentation
 
-import com.project.gatihaeyo.internal.user.dto.request.LoginRequest
-import com.project.gatihaeyo.internal.user.dto.request.SignUpRequest
-import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
+import com.project.gatihaeyo.external.openapi.dto.InfoRecordDto
 import com.project.gatihaeyo.internal.auth.application.service.ReissueTokenService
+import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
+import com.project.gatihaeyo.internal.user.application.service.AccountInfoService
 import com.project.gatihaeyo.internal.user.application.service.ChangeInfoService
 import com.project.gatihaeyo.internal.user.application.service.ChangePasswordService
 import com.project.gatihaeyo.internal.user.application.service.LoginService
+import com.project.gatihaeyo.internal.user.application.service.SaveLOLAccountService
+import com.project.gatihaeyo.internal.user.application.service.SavePUBGAccountService
 import com.project.gatihaeyo.internal.user.application.service.SignUpService
 import com.project.gatihaeyo.internal.user.application.service.UserInfoService
+import com.project.gatihaeyo.internal.user.dto.request.AccountInfoRequest
 import com.project.gatihaeyo.internal.user.dto.request.ChangeInfoRequest
 import com.project.gatihaeyo.internal.user.dto.request.ChangePasswordRequest
+import com.project.gatihaeyo.internal.user.dto.request.LoginRequest
+import com.project.gatihaeyo.internal.user.dto.request.SaveLOLAccountRequest
+import com.project.gatihaeyo.internal.user.dto.request.SavePUBGAccountRequest
+import com.project.gatihaeyo.internal.user.dto.request.SignUpRequest
 import com.project.gatihaeyo.internal.user.dto.response.UserInfoResponse
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -31,7 +38,10 @@ class UserController(
     private val reissueTokenService: ReissueTokenService,
     private val userInfoService: UserInfoService,
     private val changePasswordService: ChangePasswordService,
-    private val changeInfoService: ChangeInfoService
+    private val changeInfoService: ChangeInfoService,
+    private val saveLOLAccountService: SaveLOLAccountService,
+    private val savePUBGAccountService: SavePUBGAccountService,
+    private val AccountInfoService: AccountInfoService
 ) {
 
     @PostMapping("/signup")
@@ -66,6 +76,23 @@ class UserController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun changeInfo(@Valid @RequestBody request: ChangeInfoRequest) {
         changeInfoService.execute(request)
+    }
+
+    @PutMapping("/game/lol")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun saveLOLAccount(@Valid @RequestBody request: SaveLOLAccountRequest) {
+        saveLOLAccountService.execute(request)
+    }
+
+    @PutMapping("/game/pubg")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun savePUBGAccount(@Valid @RequestBody request: SavePUBGAccountRequest) {
+        savePUBGAccountService.execute(request)
+    }
+
+    @GetMapping("/game")
+    fun accountInfo(@Valid request: AccountInfoRequest): List<InfoRecordDto> {
+        return AccountInfoService.execute(request)
     }
 
 }
