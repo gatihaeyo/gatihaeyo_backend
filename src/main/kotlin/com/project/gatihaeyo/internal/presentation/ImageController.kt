@@ -1,8 +1,8 @@
 package com.project.gatihaeyo.internal.presentation
 
-import com.project.gatihaeyo.internal.image.application.service.UploadImageService
-import com.project.gatihaeyo.internal.image.dto.request.UploadImageRequest
-import com.project.gatihaeyo.internal.image.dto.response.UploadImageResponse
+import com.project.gatihaeyo.internal.application.service.image.UploadImageService
+import com.project.gatihaeyo.internal.dto.request.image.UploadImageRequest
+import com.project.gatihaeyo.internal.dto.response.image.UploadImageResponse
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping

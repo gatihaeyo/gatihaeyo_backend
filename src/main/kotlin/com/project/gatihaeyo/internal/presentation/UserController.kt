@@ -1,35 +1,42 @@
 package com.project.gatihaeyo.internal.presentation
 
 import com.project.gatihaeyo.external.openapi.dto.InfoRecordDto
-import com.project.gatihaeyo.internal.auth.application.service.ReissueTokenService
-import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
-import com.project.gatihaeyo.internal.user.application.service.AccountInfoService
-import com.project.gatihaeyo.internal.user.application.service.ChangeInfoService
-import com.project.gatihaeyo.internal.user.application.service.ChangePasswordService
-import com.project.gatihaeyo.internal.user.application.service.LoginService
-import com.project.gatihaeyo.internal.user.application.service.SaveLOLAccountService
-import com.project.gatihaeyo.internal.user.application.service.SavePUBGAccountService
-import com.project.gatihaeyo.internal.user.application.service.SignUpService
-import com.project.gatihaeyo.internal.user.application.service.UserInfoService
-import com.project.gatihaeyo.internal.user.dto.request.AccountInfoRequest
-import com.project.gatihaeyo.internal.user.dto.request.ChangeInfoRequest
-import com.project.gatihaeyo.internal.user.dto.request.ChangePasswordRequest
-import com.project.gatihaeyo.internal.user.dto.request.LoginRequest
-import com.project.gatihaeyo.internal.user.dto.request.SaveLOLAccountRequest
-import com.project.gatihaeyo.internal.user.dto.request.SavePUBGAccountRequest
-import com.project.gatihaeyo.internal.user.dto.request.SignUpRequest
-import com.project.gatihaeyo.internal.user.dto.response.UserInfoResponse
+import com.project.gatihaeyo.internal.application.service.auth.ReissueTokenService
+import com.project.gatihaeyo.internal.dto.response.auth.TokenResponse
+import com.project.gatihaeyo.internal.application.service.user.AccountInfoService
+import com.project.gatihaeyo.internal.application.service.user.ChangeInfoService
+import com.project.gatihaeyo.internal.application.service.user.ChangePasswordService
+import com.project.gatihaeyo.internal.application.service.user.LoginService
+import com.project.gatihaeyo.internal.application.service.user.SaveLOLAccountService
+import com.project.gatihaeyo.internal.application.service.user.SavePUBGAccountService
+import com.project.gatihaeyo.internal.application.service.user.SearchUserService
+import com.project.gatihaeyo.internal.application.service.user.SignUpService
+import com.project.gatihaeyo.internal.application.service.user.UserInfoService
+import com.project.gatihaeyo.internal.dto.request.user.AccountInfoRequest
+import com.project.gatihaeyo.internal.dto.request.user.ChangeInfoRequest
+import com.project.gatihaeyo.internal.dto.request.user.ChangePasswordRequest
+import com.project.gatihaeyo.internal.dto.request.user.LoginRequest
+import com.project.gatihaeyo.internal.dto.request.user.SaveLOLAccountRequest
+import com.project.gatihaeyo.internal.dto.request.user.SavePUBGAccountRequest
+import com.project.gatihaeyo.internal.dto.request.user.SignUpRequest
+import com.project.gatihaeyo.internal.dto.response.user.SearchUserResponse
+import com.project.gatihaeyo.internal.dto.response.user.UserInfoResponse
 import org.springframework.http.HttpStatus
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import java.util.UUID
 import javax.validation.Valid
+import javax.validation.constraints.NotNull
 
+@Validated
 @RequestMapping("/users")
 @RestController
 class UserController(
@@ -41,7 +48,8 @@ class UserController(
     private val changeInfoService: ChangeInfoService,
     private val saveLOLAccountService: SaveLOLAccountService,
     private val savePUBGAccountService: SavePUBGAccountService,
-    private val AccountInfoService: AccountInfoService
+    private val accountInfoService: AccountInfoService,
+    private val searchUserService: SearchUserService
 ) {
 
     @PostMapping("/signup")
@@ -62,8 +70,8 @@ class UserController(
     }
 
     @GetMapping("/info")
-    fun userInfo(): UserInfoResponse {
-        return userInfoService.execute()
+    fun userInfo(@RequestParam userId: UUID?): UserInfoResponse {
+        return userInfoService.execute(userId)
     }
 
     @PutMapping("/change/password")
@@ -92,7 +100,23 @@ class UserController(
 
     @GetMapping("/game")
     fun accountInfo(@Valid request: AccountInfoRequest): List<InfoRecordDto> {
-        return AccountInfoService.execute(request)
+        return accountInfoService.execute(request)
+    }
+
+    @GetMapping("/target")
+    fun searchUser(@RequestParam @NotNull keyword: String): SearchUserResponse {
+        val response = SearchUserResponse(
+                searchUserService.execute(keyword).map {
+                    SearchUserResponse.UserResponse(
+                        id = it.id,
+                        nickname = it.nickname,
+                        email = it.email,
+                        profileImagePath = it.profileImagePath
+                    )
+                }
+        )
+
+        return response
     }
 
 }

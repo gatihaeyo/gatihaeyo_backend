@@ -1,9 +1,9 @@
 package com.project.gatihaeyo.internal.presentation
 
-import com.project.gatihaeyo.internal.auth.application.service.SendAuthCodeService
-import com.project.gatihaeyo.internal.auth.application.service.VerifiedAuthCodeService
-import com.project.gatihaeyo.internal.auth.dto.request.SendAuthCodeRequest
-import com.project.gatihaeyo.internal.auth.dto.request.VerifiedAuthCodeRequest
+import com.project.gatihaeyo.internal.application.service.auth.SendAuthCodeService
+import com.project.gatihaeyo.internal.application.service.auth.VerifiedAuthCodeService
+import com.project.gatihaeyo.internal.dto.request.auth.SendAuthCodeRequest
+import com.project.gatihaeyo.internal.dto.request.auth.VerifiedAuthCodeRequest
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
