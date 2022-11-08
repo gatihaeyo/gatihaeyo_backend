@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.user.application.port
+package com.project.gatihaeyo.internal.application.port.user
 
-import com.project.gatihaeyo.internal.user.domain.model.User
+import com.project.gatihaeyo.internal.domain.model.auth.User
 import java.util.UUID
 
 interface QueryUserPort {
@@ -14,5 +14,7 @@ interface QueryUserPort {
     fun existsUserByEmail(email: String): Boolean
 
     fun existsUserByNickname(nickname: String): Boolean
+
+    fun queryUserListByNickname(nickname: String): List<User>
 
 }
