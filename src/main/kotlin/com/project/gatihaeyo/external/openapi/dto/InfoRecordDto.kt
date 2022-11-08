@@ -5,5 +5,5 @@ data class InfoRecordDto(
     val tier: String,
     val rank: String,
     val point: Int,
-    val winRatio: Double,
+    val winRatio: Double
 )
