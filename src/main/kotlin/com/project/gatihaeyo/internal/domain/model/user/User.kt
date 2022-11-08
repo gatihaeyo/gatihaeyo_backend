@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.domain.model.auth
+package com.project.gatihaeyo.internal.domain.model.user
 
-import com.project.gatihaeyo.internal.domain.model.user.Authority
+import com.project.gatihaeyo.internal.domain.model.auth.Authority
 import java.lang.System.getenv
 import java.time.LocalDateTime
 import java.util.*
