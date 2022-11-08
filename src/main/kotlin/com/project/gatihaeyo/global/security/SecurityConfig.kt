@@ -1,9 +1,8 @@
 package com.project.gatihaeyo.global.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.project.gatihaeyo.global.filter.FilterConfig
+import com.project.gatihaeyo.internal.presentation.filter.FilterConfig
 import com.project.gatihaeyo.global.security.token.JwtParser
-import com.project.gatihaeyo.internal.user.domain.model.Authority
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod

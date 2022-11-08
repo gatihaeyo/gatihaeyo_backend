@@ -4,8 +4,8 @@ import com.amazonaws.services.s3.AmazonS3Client
 import com.amazonaws.services.s3.model.CannedAccessControlList
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
-import com.project.gatihaeyo.internal.image.application.port.ManageImagePort
-import com.project.gatihaeyo.internal.image.domain.exception.FileIoInterruptedException
+import com.project.gatihaeyo.internal.application.port.image.ManageImagePort
+import com.project.gatihaeyo.internal.domain.exception.image.FileIoInterruptedException
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 import java.io.IOException

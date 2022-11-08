@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.global.security.principle
 
 import com.project.gatihaeyo.global.security.exception.InvalidTokenException
-import com.project.gatihaeyo.internal.user.persistence.repository.UserJpaRepository
+import com.project.gatihaeyo.internal.persistence.repository.user.UserJpaRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Component

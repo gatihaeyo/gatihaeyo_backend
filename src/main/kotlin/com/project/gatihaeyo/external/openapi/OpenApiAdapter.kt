@@ -3,7 +3,7 @@ package com.project.gatihaeyo.external.openapi
 import com.project.gatihaeyo.external.openapi.client.LOLClient
 import com.project.gatihaeyo.external.openapi.client.PUBGClient
 import com.project.gatihaeyo.external.openapi.dto.InfoRecordDto
-import com.project.gatihaeyo.internal.user.application.port.OpenApiPort
+import com.project.gatihaeyo.internal.application.port.OpenApiPort
 import org.springframework.stereotype.Component
 import kotlin.math.round
 

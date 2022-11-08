@@ -1,10 +1,10 @@
 package com.project.gatihaeyo.global.security.token
 
 import com.project.gatihaeyo.global.security.SecurityProperties
-import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
-import com.project.gatihaeyo.internal.auth.application.port.CommandRefreshTokenPort
-import com.project.gatihaeyo.internal.auth.domain.model.RefreshToken
-import com.project.gatihaeyo.internal.user.domain.model.Authority
+import com.project.gatihaeyo.internal.dto.response.auth.TokenResponse
+import com.project.gatihaeyo.internal.application.port.auth.CommandRefreshTokenPort
+import com.project.gatihaeyo.internal.domain.model.user.RefreshToken
+import com.project.gatihaeyo.internal.domain.model.user.Authority
 import io.jsonwebtoken.Header
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm

@@ -4,7 +4,7 @@ import com.amazonaws.services.simpleemail.AmazonSimpleEmailService
 import com.amazonaws.services.simpleemail.model.Destination
 import com.amazonaws.services.simpleemail.model.SendTemplatedEmailRequest
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.project.gatihaeyo.internal.auth.application.port.SendAuthCodePort
+import com.project.gatihaeyo.internal.application.port.auth.SendAuthCodePort
 import org.springframework.stereotype.Component
 
 @Component

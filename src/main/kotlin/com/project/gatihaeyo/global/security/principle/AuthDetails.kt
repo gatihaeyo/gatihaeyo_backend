@@ -1,6 +1,6 @@
 package com.project.gatihaeyo.global.security.principle
 
-import com.project.gatihaeyo.internal.user.domain.model.Authority
+import com.project.gatihaeyo.internal.domain.model.user.Authority
 import org.springframework.security.core.userdetails.UserDetails
 import java.util.*
 
