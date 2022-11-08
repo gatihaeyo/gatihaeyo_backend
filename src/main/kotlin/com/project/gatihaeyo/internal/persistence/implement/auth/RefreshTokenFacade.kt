@@ -2,7 +2,7 @@ package com.project.gatihaeyo.internal.persistence.implement.auth
 
 import com.project.gatihaeyo.internal.application.port.auth.CommandRefreshTokenPort
 import com.project.gatihaeyo.internal.application.port.auth.QueryRefreshTokenPort
-import com.project.gatihaeyo.internal.domain.model.user.RefreshToken
+import com.project.gatihaeyo.internal.domain.model.auth.RefreshToken
 import com.project.gatihaeyo.internal.persistence.mapper.auth.RefreshTokenMapper
 import com.project.gatihaeyo.internal.persistence.repository.auth.RefreshTokenRepository
 import org.springframework.stereotype.Component

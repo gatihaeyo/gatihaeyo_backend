@@ -1,6 +1,6 @@
 package com.project.gatihaeyo.internal.application.port.user
 
-import com.project.gatihaeyo.internal.domain.model.auth.User
+import com.project.gatihaeyo.internal.domain.model.user.User
 import java.util.UUID
 
 interface QueryUserPort {

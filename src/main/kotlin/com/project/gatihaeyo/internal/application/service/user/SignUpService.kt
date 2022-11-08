@@ -11,8 +11,8 @@ import com.project.gatihaeyo.internal.domain.exception.user.AlreadyUsedEmailExce
 import com.project.gatihaeyo.internal.domain.exception.user.AlreadyUsedNicknameException
 import com.project.gatihaeyo.internal.domain.exception.auth.AuthCodeMismatchException
 import com.project.gatihaeyo.internal.domain.exception.auth.UncertifiedEmailException
-import com.project.gatihaeyo.internal.domain.model.user.Authority
-import com.project.gatihaeyo.internal.domain.model.auth.User
+import com.project.gatihaeyo.internal.domain.model.auth.Authority
+import com.project.gatihaeyo.internal.domain.model.user.User
 import org.springframework.stereotype.Service
 
 @Service

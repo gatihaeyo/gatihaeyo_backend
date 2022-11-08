@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.internal.persistence.mapper.user
 
 import com.project.gatihaeyo.global.GenericMapper
-import com.project.gatihaeyo.internal.domain.model.auth.Account
+import com.project.gatihaeyo.internal.domain.model.user.Account
 import com.project.gatihaeyo.internal.persistence.model.user.AccountEntity
 import com.project.gatihaeyo.internal.persistence.repository.user.UserJpaRepository
 import org.mapstruct.Mapper

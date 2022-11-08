@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.internal.persistence.model.user
 
-import com.project.gatihaeyo.global.BaseEntity
-import com.project.gatihaeyo.internal.domain.model.user.Authority
+import com.project.gatihaeyo.internal.persistence.model.BaseEntity
+import com.project.gatihaeyo.internal.domain.model.auth.Authority
 import org.hibernate.validator.constraints.Length
 import org.jetbrains.annotations.NotNull
 import java.time.LocalDateTime

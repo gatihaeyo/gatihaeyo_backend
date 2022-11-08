@@ -2,7 +2,7 @@ package com.project.gatihaeyo.internal.persistence.implement.auth
 
 import com.project.gatihaeyo.internal.application.port.auth.CommandAuthCodePort
 import com.project.gatihaeyo.internal.application.port.auth.QueryAuthCodePort
-import com.project.gatihaeyo.internal.domain.model.user.AuthCode
+import com.project.gatihaeyo.internal.domain.model.auth.AuthCode
 import com.project.gatihaeyo.internal.persistence.mapper.auth.AuthCodeMapper
 import com.project.gatihaeyo.internal.persistence.repository.auth.AuthCodeRepository
 import org.springframework.stereotype.Component

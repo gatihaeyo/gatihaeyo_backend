@@ -2,7 +2,7 @@ package com.project.gatihaeyo.internal.persistence.implement.user
 
 import com.project.gatihaeyo.internal.application.port.user.CommandUserPort
 import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
-import com.project.gatihaeyo.internal.domain.model.auth.User
+import com.project.gatihaeyo.internal.domain.model.user.User
 import com.project.gatihaeyo.internal.persistence.mapper.user.UserMapper
 import com.project.gatihaeyo.internal.persistence.repository.user.UserJpaRepository
 import org.springframework.stereotype.Component

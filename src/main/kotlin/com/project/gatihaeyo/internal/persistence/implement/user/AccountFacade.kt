@@ -2,9 +2,9 @@ package com.project.gatihaeyo.internal.persistence.implement.user
 
 import com.project.gatihaeyo.internal.application.port.user.CommandAccountPort
 import com.project.gatihaeyo.internal.application.port.user.QueryAccountPort
-import com.project.gatihaeyo.internal.domain.model.auth.Account
+import com.project.gatihaeyo.internal.domain.model.user.Account
 import com.project.gatihaeyo.internal.domain.model.Category
-import com.project.gatihaeyo.internal.domain.model.auth.User
+import com.project.gatihaeyo.internal.domain.model.user.User
 import com.project.gatihaeyo.internal.persistence.mapper.user.AccountMapper
 import com.project.gatihaeyo.internal.persistence.mapper.user.UserMapper
 import com.project.gatihaeyo.internal.persistence.model.user.AccountEntityId
