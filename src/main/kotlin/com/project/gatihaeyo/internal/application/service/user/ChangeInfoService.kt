@@ -1,13 +1,13 @@
 package com.project.gatihaeyo.internal.application.service.user
 
+import com.project.gatihaeyo.global.annotation.BusinessService
 import com.project.gatihaeyo.global.security.SecurityService
 import com.project.gatihaeyo.internal.application.port.user.CommandUserPort
 import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
 import com.project.gatihaeyo.internal.domain.exception.user.UserNotFoundException
 import com.project.gatihaeyo.internal.dto.request.user.ChangeInfoRequest
-import org.springframework.stereotype.Service
 
-@Service
+@BusinessService
 class ChangeInfoService(
     private val queryUserPort: QueryUserPort,
     private val commandUserPort: CommandUserPort,

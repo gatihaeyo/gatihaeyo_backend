@@ -1,15 +1,15 @@
 package com.project.gatihaeyo.internal.application.service.user
 
+import com.project.gatihaeyo.global.annotation.BusinessService
 import com.project.gatihaeyo.global.security.SecurityService
 import com.project.gatihaeyo.global.security.token.JwtGenerator
-import com.project.gatihaeyo.internal.dto.request.user.LoginRequest
-import com.project.gatihaeyo.internal.dto.response.auth.TokenResponse
 import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
 import com.project.gatihaeyo.internal.domain.exception.auth.DifferentPasswordException
 import com.project.gatihaeyo.internal.domain.exception.user.UserNotFoundException
-import org.springframework.stereotype.Service
+import com.project.gatihaeyo.internal.dto.request.user.LoginRequest
+import com.project.gatihaeyo.internal.dto.response.auth.TokenResponse
 
-@Service
+@BusinessService
 class LoginService(
     private val queryUserPort: QueryUserPort,
     private val securityService: SecurityService,

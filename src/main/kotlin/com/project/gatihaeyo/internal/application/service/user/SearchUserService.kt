@@ -1,10 +1,10 @@
 package com.project.gatihaeyo.internal.application.service.user
 
+import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
 import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
 import com.project.gatihaeyo.internal.domain.model.user.User
-import org.springframework.stereotype.Service
 
-@Service
+@ReadOnlyBusinessService
 class SearchUserService(
     private val queryUserPort: QueryUserPort
 ) {

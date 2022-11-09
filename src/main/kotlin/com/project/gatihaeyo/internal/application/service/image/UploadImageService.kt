@@ -1,12 +1,12 @@
 package com.project.gatihaeyo.internal.application.service.image
 
+import com.project.gatihaeyo.global.annotation.BusinessService
 import com.project.gatihaeyo.internal.application.port.image.ManageImagePort
 import com.project.gatihaeyo.internal.domain.exception.image.CompatibleFileException
 import com.project.gatihaeyo.internal.dto.request.image.UploadImageRequest
-import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 
-@Service
+@BusinessService
 class UploadImageService(
     private val manageImagePort: ManageImagePort
 ) {

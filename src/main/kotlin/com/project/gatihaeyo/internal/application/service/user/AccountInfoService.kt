@@ -1,6 +1,7 @@
 package com.project.gatihaeyo.internal.application.service.user
 
 import com.project.gatihaeyo.external.openapi.dto.InfoRecordDto
+import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
 import com.project.gatihaeyo.global.exception.InternalServerErrorException
 import com.project.gatihaeyo.internal.application.port.OpenApiPort
 import com.project.gatihaeyo.internal.application.port.user.QueryAccountPort
@@ -9,9 +10,8 @@ import com.project.gatihaeyo.internal.domain.exception.user.AccountNotFoundExcep
 import com.project.gatihaeyo.internal.domain.exception.user.UserNotFoundException
 import com.project.gatihaeyo.internal.domain.model.Category
 import com.project.gatihaeyo.internal.dto.request.user.AccountInfoRequest
-import org.springframework.stereotype.Service
 
-@Service
+@ReadOnlyBusinessService
 class AccountInfoService(
     private val openApiPort: OpenApiPort,
     private val queryUserPort: QueryUserPort,

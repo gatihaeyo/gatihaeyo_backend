@@ -1,14 +1,14 @@
 package com.project.gatihaeyo.internal.application.service.team
 
+import com.project.gatihaeyo.global.annotation.BusinessService
 import com.project.gatihaeyo.global.security.SecurityService
 import com.project.gatihaeyo.internal.application.port.team.CommandTeamMemberPort
 import com.project.gatihaeyo.internal.application.port.team.CommandTeamPort
 import com.project.gatihaeyo.internal.domain.model.team.Team
 import com.project.gatihaeyo.internal.domain.model.team.TeamMember
 import com.project.gatihaeyo.internal.dto.request.team.CreateTeamRequest
-import org.springframework.stereotype.Service
 
-@Service
+@BusinessService
 class CreateTeamService(
     private val commandTeamPort: CommandTeamPort,
     private val commandTeamMemberPort: CommandTeamMemberPort,
