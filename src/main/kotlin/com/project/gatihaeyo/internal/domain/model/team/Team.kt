@@ -2,7 +2,7 @@ package com.project.gatihaeyo.internal.domain.model.team
 
 import com.project.gatihaeyo.global.annotation.Default
 import com.project.gatihaeyo.internal.domain.model.Category
-import java.util.Date
+import java.time.LocalDateTime
 import java.util.UUID
 
 data class Team @Default constructor(
@@ -18,7 +18,11 @@ data class Team @Default constructor(
 
     val currentPersonnel: Int,
 
-    val updateAt: Date
+    val applicantPersonnel: Int,
+
+    val updateAt: LocalDateTime,
+
+    val createAt: LocalDateTime
 ) {
     constructor(master: UUID, title: String, category: Category, personnel: Int) : this(
         master = master,
@@ -26,6 +30,8 @@ data class Team @Default constructor(
         category = category,
         personnel = personnel,
         currentPersonnel = 1,
-        updateAt = Date()
+        applicantPersonnel = 0,
+        updateAt = LocalDateTime.now(),
+        createAt = LocalDateTime.now()
     )
 }
