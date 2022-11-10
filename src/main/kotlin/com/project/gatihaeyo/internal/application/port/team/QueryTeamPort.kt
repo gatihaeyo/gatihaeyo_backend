@@ -6,4 +6,6 @@ import java.util.UUID
 interface QueryTeamPort {
 
     fun queryTeamById(id: UUID) : Team?
+
+    fun existsTeamById(id: UUID) : Boolean
 }
