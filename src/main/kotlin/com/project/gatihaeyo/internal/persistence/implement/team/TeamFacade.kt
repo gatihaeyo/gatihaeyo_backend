@@ -24,4 +24,8 @@ class TeamFacade(
         teamJpaRepository.queryTeamEntityById(id)
     )
 
+    override fun existsTeamById(id: UUID): Boolean {
+        TODO("Not yet implemented")
+    }
+
 }
