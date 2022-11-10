@@ -24,7 +24,7 @@ class TeamMemberFacade(
         teamMemberJpaRepository.queryTeamMemberEntityByUserId(userId)
     )
 
-    override fun existsTeamMemberByUserId(userId: UUID): Boolean {
-        return teamMemberJpaRepository.existsTeamMemberEntityByUserId(userId)
+    override fun existsTeamMemberByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean {
+        return teamMemberJpaRepository.existsTeamMemberEntityByUserIdAndTeamId(userId, teamId)
     }
 }
