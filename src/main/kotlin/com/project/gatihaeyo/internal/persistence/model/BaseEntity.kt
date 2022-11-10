@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.global
+package com.project.gatihaeyo.internal.persistence.model
 
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
@@ -14,4 +14,4 @@ abstract class BaseEntity(
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "BINARY(16)")
     val id: UUID?
-)
+) : BaseTimeEntity()
