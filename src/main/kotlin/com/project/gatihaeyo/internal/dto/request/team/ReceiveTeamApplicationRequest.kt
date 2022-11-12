@@ -3,7 +3,7 @@ package com.project.gatihaeyo.internal.dto.request.team
 import java.util.UUID
 import javax.validation.constraints.NotNull
 
-data class CommissionTeamRequest(
+data class ReceiveTeamApplicationRequest(
 
     @field:NotNull
     val userId: UUID,
