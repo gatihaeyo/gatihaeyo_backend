@@ -8,7 +8,7 @@ import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundExceptio
 import com.project.gatihaeyo.internal.dto.response.team.ShowTeamInvitationResponse
 
 @ReadOnlyBusinessService
-class TeamInvitationListService(
+class ShowTeamInvitationService(
     private val queryTeamPort: QueryTeamPort,
     private val queryTeamInviteePort: QueryTeamInviteePort,
     private val securityService: SecurityService
@@ -19,17 +19,16 @@ class TeamInvitationListService(
 
         val list = queryTeamInviteePort.queryTeamInviteesByUserId(currentUserId)
 
-        val teams = list.map {
-            queryTeamPort.queryTeamById(it.teamId) ?: throw TeamNotFoundException.EXCEPTION
-        }
-
         return ShowTeamInvitationResponse(
-            teams.map {
-                ShowTeamInvitationResponse.ShowTeamInvitationElement(
-                    id = it.id,
-                    category = it.category,
-                    title = it.title
-                )
+            list.map {
+                queryTeamPort.queryTeamById(it.teamId)?.let { team ->
+                    ShowTeamInvitationResponse.ShowTeamInvitationElement(
+                        id = team.id,
+                        category = team.category,
+                        title = team.title,
+                        inviteAt = it.createAt
+                    )
+                } ?: throw TeamNotFoundException.EXCEPTION
             }
         )
     }

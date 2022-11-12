@@ -1,6 +1,7 @@
 package com.project.gatihaeyo.internal.dto.response.team
 
 import com.project.gatihaeyo.internal.domain.model.Category
+import java.time.LocalDateTime
 import java.util.UUID
 
 data class ShowTeamInvitationResponse(
@@ -9,6 +10,7 @@ data class ShowTeamInvitationResponse(
     data class ShowTeamInvitationElement(
         val id: UUID,
         val title: String,
-        val category: Category
+        val category: Category,
+        val inviteAt: LocalDateTime
     )
 }
