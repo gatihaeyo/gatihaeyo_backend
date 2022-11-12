@@ -1,8 +1,8 @@
 package com.project.gatihaeyo.global.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.project.gatihaeyo.internal.presentation.filter.FilterConfig
 import com.project.gatihaeyo.global.security.token.JwtParser
+import com.project.gatihaeyo.internal.presentation.filter.FilterConfig
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -43,6 +43,10 @@ class SecurityConfig(
 
             // images
             .antMatchers(HttpMethod.POST, "/images").permitAll()
+
+            // teams
+            .antMatchers(HttpMethod.GET, "/teams").permitAll()
+            .antMatchers(HttpMethod.GET, "/teams/{team-id}").permitAll()
 
             .anyRequest().authenticated()
 
