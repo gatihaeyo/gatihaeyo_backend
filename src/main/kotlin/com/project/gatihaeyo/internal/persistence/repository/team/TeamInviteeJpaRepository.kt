@@ -7,6 +7,8 @@ import java.util.UUID
 
 interface TeamInviteeJpaRepository : CrudRepository<TeamInviteeEntity, TeamUserEntityId> {
 
+    fun queryTeamInviteeEntitiesByUserId(userId: UUID): List<TeamInviteeEntity>
+
     fun deleteTeamInviteeEntityByKey(key: TeamUserEntityId)
 
     fun deleteTeamInviteeEntitiesByTeamId(teamId: UUID)

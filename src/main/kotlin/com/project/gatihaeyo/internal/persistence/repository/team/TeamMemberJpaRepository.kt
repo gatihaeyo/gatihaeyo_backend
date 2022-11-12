@@ -8,6 +8,8 @@ interface TeamMemberJpaRepository : CrudRepository<TeamMemberEntity, UUID> {
 
     fun queryTeamMemberEntityByUserId(userId: UUID): TeamMemberEntity?
 
+    fun queryTeamMemberEntitiesByTeamId(teamId: UUID): List<TeamMemberEntity>
+
     fun existsTeamMemberEntityByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean
 
     fun deleteTeamMemberEntityByUserIdAndTeamId(userId: UUID, teamId: UUID)
