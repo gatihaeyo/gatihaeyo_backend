@@ -7,5 +7,7 @@ interface QueryTeamApplicantPort {
 
     fun queryTeamApplicantByUserIdAndTeamId(userId: UUID, teamId: UUID) : TeamApplicant?
 
+    fun queryTeamApplicantListByUserId(userId: UUID): List<TeamApplicant>
+
     fun existsTeamApplicantByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean
 }

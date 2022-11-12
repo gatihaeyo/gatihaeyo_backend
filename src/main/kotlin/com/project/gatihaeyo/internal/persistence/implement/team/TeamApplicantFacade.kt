@@ -35,6 +35,13 @@ class TeamApplicantFacade(
             )
         )
 
+    override fun queryTeamApplicantListByUserId(userId: UUID): List<TeamApplicant> {
+        return teamApplicantJpaRepository.queryTeamApplicantEntitiesByUserId(userId)
+            .map {
+                teamApplicantMapper.toDomain(it)!!
+            }
+    }
+
     override fun existsTeamApplicantByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean {
         return teamApplicantJpaRepository.existsById(
             TeamUserEntityId(
