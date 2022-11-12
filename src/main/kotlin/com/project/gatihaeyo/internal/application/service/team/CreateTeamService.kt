@@ -16,14 +16,16 @@ class CreateTeamService(
 ) {
 
     fun execute(request: CreateTeamRequest) {
+        val (title, content, category, personnel) = request
         val currentUserId = securityService.getCurrentUserId()
 
         val team = commandTeamPort.saveTeam(
             Team(
                 master = currentUserId,
-                title = request.title,
-                category = request.category,
-                personnel = request.personnel
+                title = title,
+                content = content,
+                category = category,
+                personnel = personnel
             )
         )
 
