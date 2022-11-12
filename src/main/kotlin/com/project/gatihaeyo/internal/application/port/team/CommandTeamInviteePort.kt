@@ -8,4 +8,6 @@ interface CommandTeamInviteePort {
     fun saveTeamInvitee(teamInvitee: TeamInvitee): TeamInvitee
 
     fun deleteTeamInviteeByUserIdAndTeamId(userId: UUID, teamId: UUID)
+
+    fun deleteTeamInviteeByTeamId(teamId: UUID)
 }

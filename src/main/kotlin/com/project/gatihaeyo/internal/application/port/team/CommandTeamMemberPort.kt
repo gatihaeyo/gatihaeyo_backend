@@ -8,4 +8,6 @@ interface CommandTeamMemberPort {
     fun saveTeamMember(teamMember: TeamMember): TeamMember
 
     fun deleteTeamMemberByUserIdAndTeamId(userId: UUID, teamId: UUID)
+
+    fun deleteTeamMemberByTeamId(teamId: UUID)
 }
