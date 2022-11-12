@@ -20,6 +20,14 @@ class TeamMemberFacade(
        )
     )!!
 
+    override fun deleteTeamMemberByUserIdAndTeamId(userId: UUID, teamId: UUID) {
+        teamMemberJpaRepository.deleteTeamMemberEntityByUserIdAndTeamId(userId, teamId)
+    }
+
+    override fun deleteTeamMemberByTeamId(teamId: UUID) {
+        teamMemberJpaRepository.deleteTeamMemberEntitiesByTeamId(teamId)
+    }
+
     override fun queryTeamMemberByUserId(userId: UUID) = teamMemberMapper.toDomain(
         teamMemberJpaRepository.queryTeamMemberEntityByUserId(userId)
     )

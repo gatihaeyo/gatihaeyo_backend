@@ -32,6 +32,10 @@ class TeamInviteeFacade(
         )
     }
 
+    override fun deleteTeamInviteeByTeamId(teamId: UUID) {
+       teamInviteeJpaRepository.deleteTeamInviteeEntitiesByTeamId(teamId)
+    }
+
     override fun existsTeamInviteeByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean {
         return teamInviteeJpaRepository.existsById(
             TeamUserEntityId(

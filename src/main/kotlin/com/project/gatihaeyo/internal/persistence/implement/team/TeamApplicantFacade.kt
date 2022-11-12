@@ -21,6 +21,10 @@ class TeamApplicantFacade(
        )
     )!!
 
+    override fun deleteTeamApplicantByTeamId(teamId: UUID) {
+        teamApplicantJpaRepository.deleteTeamApplicantEntitiesByTeamId(teamId)
+    }
+
     override fun queryTeamApplicantByUserIdAndTeamId(userId: UUID, teamId: UUID) = teamApplicantMapper
         .toDomain(
             teamApplicantJpaRepository.queryTeamApplicantEntityByKey(

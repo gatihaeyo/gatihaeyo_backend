@@ -20,12 +20,18 @@ class TeamFacade(
         )
     )!!
 
+    override fun deleteTeamById(teamId: UUID) {
+        teamJpaRepository.deleteById(teamId)
+    }
+
     override fun queryTeamById(id: UUID) = teamMapper.toDomain(
         teamJpaRepository.queryTeamEntityById(id)
     )
 
     override fun existsTeamById(id: UUID): Boolean {
-        TODO("Not yet implemented")
+        return teamJpaRepository.existsById(id)
     }
+
+
 
 }
