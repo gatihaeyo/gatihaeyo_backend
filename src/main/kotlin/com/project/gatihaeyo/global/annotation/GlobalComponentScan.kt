@@ -12,7 +12,8 @@ import org.springframework.context.annotation.FilterType
         Filter(
             type = FilterType.ANNOTATION,
             classes = [
-                BusinessService::class
+                BusinessService::class,
+                ReadOnlyBusinessService::class
             ]
         )
     ]
