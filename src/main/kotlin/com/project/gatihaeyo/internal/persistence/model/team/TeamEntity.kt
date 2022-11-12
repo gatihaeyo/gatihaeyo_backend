@@ -28,6 +28,9 @@ class TeamEntity(
     @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     val title: String,
 
+    @Column(columnDefinition = "VARCHAR(500)", nullable = false)
+    val content: String,
+
     @field:NotNull
     @field:Enumerated(EnumType.STRING)
     val category: Category,
