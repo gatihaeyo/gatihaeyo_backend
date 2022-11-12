@@ -12,7 +12,7 @@ import com.project.gatihaeyo.internal.domain.exception.team.TeamPermissionExcept
 import java.util.UUID
 
 @BusinessService
-class TeamCancelService(
+class TeamDissipateService(
     private val queryTeamPort: QueryTeamPort,
     private val commandTeamPort: CommandTeamPort,
     private val commandTeamApplicantPort: CommandTeamApplicantPort,

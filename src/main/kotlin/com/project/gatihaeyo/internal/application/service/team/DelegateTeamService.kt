@@ -8,17 +8,17 @@ import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
 import com.project.gatihaeyo.internal.domain.exception.team.TeamMemberNotFoundException
 import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundException
 import com.project.gatihaeyo.internal.domain.exception.team.TeamPermissionException
-import com.project.gatihaeyo.internal.dto.request.team.CommissionTeamRequest
+import com.project.gatihaeyo.internal.dto.request.team.DelegateTeamRequest
 
 @BusinessService
-class CommissionTeamService(
+class DelegateTeamService(
     private val queryTeamPort: QueryTeamPort,
     private val queryTeamMemberPort: QueryTeamMemberPort,
     private val commandTeamPort: CommandTeamPort,
     private val securityService: SecurityService
 ) {
 
-    fun execute(request: CommissionTeamRequest) {
+    fun execute(request: DelegateTeamRequest) {
         val currentUserId = securityService.getCurrentUserId()
 
         val team = queryTeamPort.queryTeamById(request.teamId) ?: throw TeamNotFoundException.EXCEPTION

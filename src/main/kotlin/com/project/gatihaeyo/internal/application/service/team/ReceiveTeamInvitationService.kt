@@ -14,7 +14,7 @@ import com.project.gatihaeyo.internal.domain.model.team.TeamMember
 import java.util.UUID
 
 @BusinessService
-class TakeTeamInviteService(
+class ReceiveTeamInvitationService(
     private val queryTeamPort: QueryTeamPort,
     private val queryTeamInviteePort: QueryTeamInviteePort,
     private val commandTeamPort: CommandTeamPort,
