@@ -12,6 +12,8 @@ data class Team @Default constructor(
 
     val title: String,
 
+    val content: String,
+
     val category: Category,
 
     val personnel: Int,
@@ -24,9 +26,10 @@ data class Team @Default constructor(
 
     val createAt: LocalDateTime
 ) {
-    constructor(master: UUID, title: String, category: Category, personnel: Int) : this(
+    constructor(master: UUID, title: String, content: String, category: Category, personnel: Int) : this(
         master = master,
         title = title,
+        content = content,
         category = category,
         personnel = personnel,
         currentPersonnel = 1,
