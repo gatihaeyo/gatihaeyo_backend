@@ -22,8 +22,8 @@ abstract class TeamApplicantMapper : GenericMapper<TeamApplicantEntity, TeamAppl
     @Mapping(target = "teamId", expression = "java(e.getKey().getTeamId())")
     abstract override fun toDomain(e: TeamApplicantEntity?): TeamApplicant?
 
-    @Mapping(target = "user", expression = "java(userJpaRepository.queryUserById(d.getUserId()))")
-    @Mapping(target = "team", expression = "java(teamJpaRepository.queryTeamById(d.getTeamId()))")
+    @Mapping(target = "user", expression = "java(userJpaRepository.queryUserEntityById(d.getUserId()))")
+    @Mapping(target = "team", expression = "java(teamJpaRepository.queryTeamEntityById(d.getTeamId()))")
     abstract override fun toEntity(d: TeamApplicant): TeamApplicantEntity
 
 }
