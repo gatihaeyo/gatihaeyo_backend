@@ -32,6 +32,13 @@ class TeamMemberFacade(
         teamMemberJpaRepository.queryTeamMemberEntityByUserId(userId)
     )
 
+    override fun queryTeamMemberListByTeamId(teamId: UUID): List<TeamMember> {
+        return teamMemberJpaRepository.queryTeamMemberEntitiesByTeamId(teamId)
+            .map {
+                teamMemberMapper.toDomain(it)!!
+            }
+    }
+
     override fun existsTeamMemberByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean {
         return teamMemberJpaRepository.existsTeamMemberEntityByUserIdAndTeamId(userId, teamId)
     }

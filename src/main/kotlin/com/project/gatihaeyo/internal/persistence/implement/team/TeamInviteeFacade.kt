@@ -45,4 +45,11 @@ class TeamInviteeFacade(
         )
     }
 
+    override fun queryTeamInviteesByUserId(userId: UUID): List<TeamInvitee> {
+        return teamInviteeJpaRepository.queryTeamInviteeEntitiesByUserId(userId)
+            .map {
+                teamInviteeMapper.toDomain(it)!!
+            }
+    }
+
 }
