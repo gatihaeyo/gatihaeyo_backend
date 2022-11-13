@@ -8,4 +8,6 @@ interface CommandTeamApplicantPort {
     fun saveTeamApplicant(teamApplicant: TeamApplicant): TeamApplicant
 
     fun deleteTeamApplicantByTeamId(teamId: UUID)
+
+    fun deleteTeamApplicantByUserIdAndTeamId(userId: UUID, teamId: UUID)
 }
