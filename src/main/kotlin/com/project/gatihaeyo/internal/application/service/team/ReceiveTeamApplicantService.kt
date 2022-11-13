@@ -13,10 +13,10 @@ import com.project.gatihaeyo.internal.domain.exception.team.TeamFullPersonnelExc
 import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundException
 import com.project.gatihaeyo.internal.domain.exception.team.TeamPermissionException
 import com.project.gatihaeyo.internal.domain.model.team.TeamMember
-import com.project.gatihaeyo.internal.dto.request.team.ReceiveTeamApplicationRequest
+import com.project.gatihaeyo.internal.dto.request.team.ReceiveTeamApplicantRequest
 
 @BusinessService
-class ReceiveTeamApplicationService(
+class ReceiveTeamApplicantService(
     private val queryTeamPort: QueryTeamPort,
     private val queryTeamApplicantPort: QueryTeamApplicantPort,
     private val queryTeamMemberPort: QueryTeamMemberPort,
@@ -25,7 +25,7 @@ class ReceiveTeamApplicationService(
     private val securityService: SecurityService
 ) {
 
-    fun execute(request: ReceiveTeamApplicationRequest) {
+    fun execute(request: ReceiveTeamApplicantRequest) {
         val currentUserId = securityService.getCurrentUserId()
 
         val team = queryTeamPort.queryTeamById(request.teamId) ?: throw TeamNotFoundException.EXCEPTION
