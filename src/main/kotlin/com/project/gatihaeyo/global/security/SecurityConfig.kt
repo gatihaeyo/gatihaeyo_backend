@@ -47,6 +47,7 @@ class SecurityConfig(
             // teams
             .antMatchers(HttpMethod.GET, "/teams").permitAll()
             .antMatchers(HttpMethod.GET, "/teams/{team-id}").permitAll()
+            .antMatchers(HttpMethod.GET, "/teams/member/{team-id}").permitAll()
 
             .anyRequest().authenticated()
 
