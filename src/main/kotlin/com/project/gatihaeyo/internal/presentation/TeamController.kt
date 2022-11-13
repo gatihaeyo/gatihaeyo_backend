@@ -6,20 +6,25 @@ import com.project.gatihaeyo.internal.application.service.team.DelegateTeamServi
 import com.project.gatihaeyo.internal.application.service.team.ExpulsionTeamService
 import com.project.gatihaeyo.internal.application.service.team.InviteTeamService
 import com.project.gatihaeyo.internal.application.service.team.ListTopTeamService
-import com.project.gatihaeyo.internal.application.service.team.ReceiveTeamApplicationService
+import com.project.gatihaeyo.internal.application.service.team.ReceiveTeamApplicantService
 import com.project.gatihaeyo.internal.application.service.team.ReceiveTeamInvitationService
+import com.project.gatihaeyo.internal.application.service.team.RemoveTeamApplicantService
+import com.project.gatihaeyo.internal.application.service.team.RemoveTeamInvitationService
 import com.project.gatihaeyo.internal.application.service.team.ShowTeamInvitationService
 import com.project.gatihaeyo.internal.application.service.team.ShowTeamListService
 import com.project.gatihaeyo.internal.application.service.team.ShowTeamMemberService
+import com.project.gatihaeyo.internal.application.service.team.ShowTeamService
 import com.project.gatihaeyo.internal.application.service.team.TeamDissipateService
 import com.project.gatihaeyo.internal.application.service.team.TeamWithdrawalService
 import com.project.gatihaeyo.internal.dto.request.team.CreateTeamRequest
 import com.project.gatihaeyo.internal.dto.request.team.DelegateTeamRequest
 import com.project.gatihaeyo.internal.dto.request.team.ExpulsionTeamRequest
 import com.project.gatihaeyo.internal.dto.request.team.InviteTeamRequest
-import com.project.gatihaeyo.internal.dto.request.team.ReceiveTeamApplicationRequest
+import com.project.gatihaeyo.internal.dto.request.team.ReceiveTeamApplicantRequest
+import com.project.gatihaeyo.internal.dto.request.team.RemoveTeamApplicantRequest
 import com.project.gatihaeyo.internal.dto.request.team.ShowTeamListRequest
 import com.project.gatihaeyo.internal.dto.response.team.ShowTeamInvitationResponse
+import com.project.gatihaeyo.internal.dto.response.team.ShowTeamListResponse
 import com.project.gatihaeyo.internal.dto.response.team.ShowTeamMemberResponse
 import com.project.gatihaeyo.internal.dto.response.team.ShowTeamResponse
 import org.springframework.http.HttpStatus
@@ -39,6 +44,7 @@ import javax.validation.Valid
 @RequestMapping("/teams")
 class TeamController(
     private val createTeamService: CreateTeamService,
+    private val showTeamService: ShowTeamService,
     private val showTeamMemberService: ShowTeamMemberService,
     private val showTeamInvitationService: ShowTeamInvitationService,
     private val applyTeamService: ApplyTeamService,
@@ -46,19 +52,26 @@ class TeamController(
     private val listTopTeamService: ListTopTeamService,
     private val showTeamListService: ShowTeamListService,
     private val delegateTeamService: DelegateTeamService,
-    private val receiveTeamApplicationService: ReceiveTeamApplicationService,
+    private val receiveTeamApplicantService: ReceiveTeamApplicantService,
     private val receiveTeamInvitationService: ReceiveTeamInvitationService,
     private val expulsionTeamService: ExpulsionTeamService,
     private val teamDissipateService: TeamDissipateService,
-    private val teamWithdrawalService: TeamWithdrawalService
+    private val teamWithdrawalService: TeamWithdrawalService,
+    private val removeTeamApplicantService: RemoveTeamApplicantService,
+    private val removeTeamInvitationService: RemoveTeamInvitationService
 ) {
 
     @GetMapping
-    fun showTeamList(@Valid request: ShowTeamListRequest): ShowTeamResponse {
+    fun showTeamList(@Valid request: ShowTeamListRequest): ShowTeamListResponse {
         return showTeamListService.execute(request)
     }
 
     @GetMapping("/{team-id}")
+    fun showTeamDetail(@PathVariable("team-id") teamId: UUID): ShowTeamResponse {
+        return showTeamService.execute(teamId)
+    }
+
+    @GetMapping("/member/{team-id}")
     fun showTeamMemberList(@PathVariable("team-id") teamId: UUID): ShowTeamMemberResponse {
         return showTeamMemberService.execute(teamId)
     }
@@ -98,8 +111,8 @@ class TeamController(
     }
 
     @PutMapping("/participation")
-    fun receiveTeamApplication(@Valid @RequestBody request: ReceiveTeamApplicationRequest) {
-        receiveTeamApplicationService.execute(request)
+    fun receiveTeamApplication(@Valid @RequestBody request: ReceiveTeamApplicantRequest) {
+        receiveTeamApplicantService.execute(request)
     }
 
     @PutMapping("/invitation/{team-id}")
@@ -123,6 +136,18 @@ class TeamController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun withdrawalTeam(@PathVariable("team-id") teamId: UUID) {
         teamWithdrawalService.execute(teamId)
+    }
+
+    @DeleteMapping("/participation/removal")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun removeApplicant(@Valid request: RemoveTeamApplicantRequest) {
+        removeTeamApplicantService.execute(request)
+    }
+
+    @DeleteMapping("/invitation/removal/{team-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun removeInvitation(@PathVariable("team-id") teamId: UUID) {
+        removeTeamInvitationService.execute(teamId)
     }
 
 }
