@@ -8,8 +8,8 @@ import com.project.gatihaeyo.internal.application.port.user.CommandUserPort
 import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
 import com.project.gatihaeyo.internal.domain.exception.auth.AuthCodeMismatchException
 import com.project.gatihaeyo.internal.domain.exception.auth.UncertifiedEmailException
-import com.project.gatihaeyo.internal.domain.exception.user.AlreadyUsedEmailException
-import com.project.gatihaeyo.internal.domain.exception.user.AlreadyUsedNicknameException
+import com.project.gatihaeyo.internal.domain.exception.auth.AlreadyUsedEmailException
+import com.project.gatihaeyo.internal.domain.exception.auth.AlreadyUsedNicknameException
 import com.project.gatihaeyo.internal.domain.model.auth.Authority
 import com.project.gatihaeyo.internal.domain.model.user.User
 import com.project.gatihaeyo.internal.dto.request.user.SignUpRequest
