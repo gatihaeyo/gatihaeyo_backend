@@ -2,14 +2,16 @@ package com.project.gatihaeyo.internal.presentation
 
 import com.project.gatihaeyo.external.openapi.dto.InfoRecordDto
 import com.project.gatihaeyo.internal.application.service.auth.ReissueTokenService
-import com.project.gatihaeyo.internal.dto.response.auth.TokenResponse
 import com.project.gatihaeyo.internal.application.service.user.AccountInfoService
+import com.project.gatihaeyo.internal.application.service.user.AppendFriendService
 import com.project.gatihaeyo.internal.application.service.user.ChangeInfoService
 import com.project.gatihaeyo.internal.application.service.user.ChangePasswordService
 import com.project.gatihaeyo.internal.application.service.user.LoginService
+import com.project.gatihaeyo.internal.application.service.user.RemoveFriendService
 import com.project.gatihaeyo.internal.application.service.user.SaveLOLAccountService
 import com.project.gatihaeyo.internal.application.service.user.SavePUBGAccountService
 import com.project.gatihaeyo.internal.application.service.user.SearchUserService
+import com.project.gatihaeyo.internal.application.service.user.ShowFriendService
 import com.project.gatihaeyo.internal.application.service.user.SignUpService
 import com.project.gatihaeyo.internal.application.service.user.UserInfoService
 import com.project.gatihaeyo.internal.dto.request.user.AccountInfoRequest
@@ -19,11 +21,14 @@ import com.project.gatihaeyo.internal.dto.request.user.LoginRequest
 import com.project.gatihaeyo.internal.dto.request.user.SaveLOLAccountRequest
 import com.project.gatihaeyo.internal.dto.request.user.SavePUBGAccountRequest
 import com.project.gatihaeyo.internal.dto.request.user.SignUpRequest
+import com.project.gatihaeyo.internal.dto.response.auth.TokenResponse
 import com.project.gatihaeyo.internal.dto.response.user.SearchUserResponse
 import com.project.gatihaeyo.internal.dto.response.user.UserInfoResponse
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -49,7 +54,10 @@ class UserController(
     private val saveLOLAccountService: SaveLOLAccountService,
     private val savePUBGAccountService: SavePUBGAccountService,
     private val accountInfoService: AccountInfoService,
-    private val searchUserService: SearchUserService
+    private val searchUserService: SearchUserService,
+    private val showFriendService: ShowFriendService,
+    private val appendFriendService: AppendFriendService,
+    private val removeFriendService: RemoveFriendService
 ) {
 
     @PostMapping("/signup")
@@ -117,6 +125,34 @@ class UserController(
         )
 
         return response
+    }
+
+    @GetMapping("/friend")
+    fun friendList(): SearchUserResponse {
+        val response = SearchUserResponse(
+            showFriendService.execute().map {
+                SearchUserResponse.UserResponse(
+                    id = it.id,
+                    nickname = it.nickname,
+                    email = it.email,
+                    profileImagePath = it.profileImagePath
+                )
+            }
+        )
+
+        return response
+    }
+
+    @PutMapping("/friend/{user-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun appendFriend(@PathVariable("user-id") friendId: UUID) {
+        appendFriendService.execute(friendId)
+    }
+
+    @DeleteMapping("/friend/{user-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun removeFriend(@PathVariable("user-id") friendId: UUID) {
+        removeFriendService.execute(friendId)
     }
 
 }
