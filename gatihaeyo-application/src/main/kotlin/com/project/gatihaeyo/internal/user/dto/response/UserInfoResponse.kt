@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.dto.response.user
+package com.project.gatihaeyo.internal.user.dto.response
 
-import com.project.gatihaeyo.internal.domain.model.Category
+import com.project.gatihaeyo.internal.Category
 import java.util.UUID
 
 data class UserInfoResponse(
