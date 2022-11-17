@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.application.port.auth
+package com.project.gatihaeyo.internal.auth.port
 
 interface SendAuthCodePort {
 
