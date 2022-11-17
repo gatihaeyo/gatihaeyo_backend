@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.application.port.user
+package com.project.gatihaeyo.internal.user.port
 
-import com.project.gatihaeyo.internal.domain.model.user.User
+import com.project.gatihaeyo.internal.user.model.User
 import java.util.UUID
 
 interface QueryFriendPort {

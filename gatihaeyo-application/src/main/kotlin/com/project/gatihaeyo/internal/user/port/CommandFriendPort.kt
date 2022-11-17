@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.application.port.user
+package com.project.gatihaeyo.internal.user.port
 
-import com.project.gatihaeyo.internal.domain.model.user.Friend
+import com.project.gatihaeyo.internal.user.model.Friend
 import java.util.UUID
 
 interface CommandFriendPort {
