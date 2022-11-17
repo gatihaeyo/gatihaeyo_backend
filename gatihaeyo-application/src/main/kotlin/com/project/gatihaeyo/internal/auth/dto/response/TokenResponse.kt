@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.dto.response.auth
+package com.project.gatihaeyo.internal.auth.dto.response
 
 import java.util.Date
 
