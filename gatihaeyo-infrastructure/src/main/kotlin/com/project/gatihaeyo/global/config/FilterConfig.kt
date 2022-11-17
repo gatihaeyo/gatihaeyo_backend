@@ -1,6 +1,8 @@
-package com.project.gatihaeyo.internal.presentation.filter
+package com.project.gatihaeyo.global.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.project.gatihaeyo.global.filter.GlobalExceptionFilter
+import com.project.gatihaeyo.global.filter.JwtFilter
 import com.project.gatihaeyo.global.security.token.JwtParser
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter
