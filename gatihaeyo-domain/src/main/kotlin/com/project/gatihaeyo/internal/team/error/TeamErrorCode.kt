@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.domain.error.team
+package com.project.gatihaeyo.internal.team.error
 
 import com.project.gatihaeyo.global.error.ErrorProperty
-import org.springframework.http.HttpStatus
+import com.project.gatihaeyo.global.error.HttpStatus
 
 enum class TeamErrorCode(
-    private val status: HttpStatus,
+    private val httpStatus: HttpStatus,
     private val message: String
 ) : ErrorProperty {
 
@@ -30,7 +30,7 @@ enum class TeamErrorCode(
 
     TEAM_NOT_FOUND(HttpStatus.NOT_FOUND, "파티를 찾을 수 없습니다.");
 
-    override fun getStatus() = status.value()
+    override fun getStatus() = httpStatus.status
 
     override fun getMessage() = message
 

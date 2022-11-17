@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.global.exception
+package com.project.gatihaeyo.global
 
 import com.project.gatihaeyo.global.error.ErrorProperty
 

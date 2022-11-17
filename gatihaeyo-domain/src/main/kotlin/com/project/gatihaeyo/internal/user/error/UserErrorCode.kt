@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.domain.error.user
+package com.project.gatihaeyo.internal.user.error
 
 import com.project.gatihaeyo.global.error.ErrorProperty
-import org.springframework.http.HttpStatus
+import com.project.gatihaeyo.global.error.HttpStatus
 
 enum class UserErrorCode(
-    private val status: HttpStatus,
+    private val httpStatus: HttpStatus,
     private val message: String
 ) : ErrorProperty {
 
@@ -20,5 +20,5 @@ enum class UserErrorCode(
 
     override fun getMessage() = message
 
-    override fun getStatus() = status.value()
+    override fun getStatus() = httpStatus.status
 }
