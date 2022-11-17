@@ -16,7 +16,6 @@ import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
-
 import org.springframework.stereotype.Component
 
 @Component

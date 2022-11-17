@@ -1,10 +1,11 @@
 package com.project.gatihaeyo.global.security.token
 
 import com.project.gatihaeyo.global.security.SecurityProperties
-import com.project.gatihaeyo.internal.dto.response.auth.TokenResponse
-import com.project.gatihaeyo.internal.application.port.auth.CommandRefreshTokenPort
-import com.project.gatihaeyo.internal.domain.model.auth.RefreshToken
-import com.project.gatihaeyo.internal.domain.model.auth.Authority
+import com.project.gatihaeyo.internal.auth.model.Authority
+import com.project.gatihaeyo.internal.auth.model.RefreshToken
+import com.project.gatihaeyo.internal.auth.port.CommandRefreshTokenPort
+import com.project.gatihaeyo.internal.auth.port.GenerateJwtPort
+import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
 import io.jsonwebtoken.Header
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -16,7 +17,7 @@ import java.util.UUID
 class JwtGenerator(
     private val commandRefreshTokenPort: CommandRefreshTokenPort,
     private val securityProperties: SecurityProperties
-) {
+) : GenerateJwtPort {
 
     private fun accessToken(userId: UUID, authority: Authority): String {
         return Jwts.builder()
@@ -49,7 +50,7 @@ class JwtGenerator(
         return token
     }
 
-    fun issuanceToken(userId: UUID, authority: Authority) = TokenResponse(
+    override fun issuanceToken(userId: UUID, authority: Authority) = TokenResponse(
         accessToken = accessToken(userId, authority),
         refreshToken = refreshToken(userId, authority),
         accessExpiredTime = Date(System.currentTimeMillis() + securityProperties.accessExpiredTime)
