@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.dto.response.team
+package com.project.gatihaeyo.internal.team.dto.response
 
 import java.time.LocalDateTime
 import java.util.UUID
