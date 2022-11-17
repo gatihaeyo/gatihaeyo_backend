@@ -1,9 +1,9 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
-import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundException
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamResponse
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamResponse
+import com.project.gatihaeyo.internal.team.exception.TeamNotFoundException
+import com.project.gatihaeyo.internal.team.port.QueryTeamPort
 import java.util.UUID
 
 @ReadOnlyBusinessService

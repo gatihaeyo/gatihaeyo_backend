@@ -1,15 +1,15 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
-import com.project.gatihaeyo.global.security.SecurityService
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamDelayPort
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamDelayPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
-import com.project.gatihaeyo.internal.domain.exception.team.TeamListTopDelayException
-import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundException
-import com.project.gatihaeyo.internal.domain.exception.team.TeamPermissionException
-import com.project.gatihaeyo.internal.domain.model.team.TeamDelay
+import com.project.gatihaeyo.internal.auth.port.SecurityPort
+import com.project.gatihaeyo.internal.team.exception.TeamListTopDelayException
+import com.project.gatihaeyo.internal.team.exception.TeamNotFoundException
+import com.project.gatihaeyo.internal.team.exception.TeamPermissionException
+import com.project.gatihaeyo.internal.team.model.TeamDelay
+import com.project.gatihaeyo.internal.team.port.CommandTeamDelayPort
+import com.project.gatihaeyo.internal.team.port.CommandTeamPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamDelayPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamPort
 import java.time.LocalDateTime
 import java.util.UUID
 
@@ -19,11 +19,11 @@ class ListTopTeamService(
     private val queryTeamDelayPort: QueryTeamDelayPort,
     private val commandTeamPort: CommandTeamPort,
     private val commandTeamDelayPort: CommandTeamDelayPort,
-    private val securityService: SecurityService
+    private val securityPort: SecurityPort
 ) {
 
     fun execute(teamId: UUID) {
-        val currentUserId = securityService.getCurrentUserId()
+        val currentUserId = securityPort.getCurrentUserId()
         val team = queryTeamPort.queryTeamById(teamId) ?: throw TeamNotFoundException.EXCEPTION
 
         if (team.master != currentUserId) {

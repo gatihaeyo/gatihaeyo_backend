@@ -1,30 +1,30 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
-import com.project.gatihaeyo.global.security.SecurityService
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamMemberPort
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamPort
-import com.project.gatihaeyo.internal.domain.model.team.Team
-import com.project.gatihaeyo.internal.domain.model.team.TeamMember
-import com.project.gatihaeyo.internal.dto.request.team.CreateTeamRequest
+import com.project.gatihaeyo.internal.auth.port.SecurityPort
+import com.project.gatihaeyo.internal.team.dto.CreateTeamDto
+import com.project.gatihaeyo.internal.team.model.Team
+import com.project.gatihaeyo.internal.team.model.TeamMember
+import com.project.gatihaeyo.internal.team.port.CommandTeamMemberPort
+import com.project.gatihaeyo.internal.team.port.CommandTeamPort
 
 @BusinessService
 class CreateTeamService(
     private val commandTeamPort: CommandTeamPort,
     private val commandTeamMemberPort: CommandTeamMemberPort,
-    private val securityService: SecurityService
+    private val securityPort: SecurityPort
 ) {
 
-    fun execute(request: CreateTeamRequest) {
+    fun execute(request: CreateTeamDto) {
         val (title, content, category, personnel) = request
-        val currentUserId = securityService.getCurrentUserId()
+        val currentUserId = securityPort.getCurrentUserId()
 
         val team = commandTeamPort.saveTeam(
             Team(
                 master = currentUserId,
                 title = title,
                 content = content,
-                category = category,
+                category = category.value,
                 personnel = personnel
             )
         )

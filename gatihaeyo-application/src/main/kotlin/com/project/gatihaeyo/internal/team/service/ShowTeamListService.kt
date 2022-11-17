@@ -1,17 +1,24 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
-import com.project.gatihaeyo.internal.dto.request.team.ShowTeamListRequest
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamListResponse
+import com.project.gatihaeyo.internal.team.dto.ShowTeamListDto
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamListResponse
+import com.project.gatihaeyo.internal.team.port.QueryTeamPort
 
 @ReadOnlyBusinessService
 class ShowTeamListService(
     private val queryTeamPort: QueryTeamPort
 ) {
 
-    fun execute(request: ShowTeamListRequest): ShowTeamListResponse {
-        val list = queryTeamPort.queryTeamList(request.size, request.last, request.order, request.category)
+    fun execute(request: ShowTeamListDto): ShowTeamListResponse {
+        val (size, page, order, category) = request
+
+        val list = queryTeamPort.queryTeamList(
+            size = size,
+            page = page,
+            order = order.value,
+            category = category.value
+        )
 
         return ShowTeamListResponse(
             list.map {

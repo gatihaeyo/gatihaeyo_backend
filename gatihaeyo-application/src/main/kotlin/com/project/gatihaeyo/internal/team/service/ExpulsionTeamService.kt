@@ -1,16 +1,16 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
-import com.project.gatihaeyo.global.security.SecurityService
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamMemberPort
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamMemberPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
-import com.project.gatihaeyo.internal.domain.exception.team.TeamMasterBreakawayException
-import com.project.gatihaeyo.internal.domain.exception.team.TeamMemberNotFoundException
-import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundException
-import com.project.gatihaeyo.internal.domain.exception.team.TeamPermissionException
-import com.project.gatihaeyo.internal.dto.request.team.ExpulsionTeamRequest
+import com.project.gatihaeyo.internal.auth.port.SecurityPort
+import com.project.gatihaeyo.internal.team.dto.ExpulsionTeamDto
+import com.project.gatihaeyo.internal.team.exception.TeamMasterBreakawayException
+import com.project.gatihaeyo.internal.team.exception.TeamMemberNotFoundException
+import com.project.gatihaeyo.internal.team.exception.TeamNotFoundException
+import com.project.gatihaeyo.internal.team.exception.TeamPermissionException
+import com.project.gatihaeyo.internal.team.port.CommandTeamMemberPort
+import com.project.gatihaeyo.internal.team.port.CommandTeamPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamMemberPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamPort
 
 @BusinessService
 class ExpulsionTeamService(
@@ -18,11 +18,11 @@ class ExpulsionTeamService(
     private val queryTeamMemberPort: QueryTeamMemberPort,
     private val commandTeamPort: CommandTeamPort,
     private val commandTeamMemberPort: CommandTeamMemberPort,
-    private val securityService: SecurityService
+    private val securityPort: SecurityPort
 ) {
 
-    fun execute(request: ExpulsionTeamRequest) {
-        val currentUserId = securityService.getCurrentUserId()
+    fun execute(request: ExpulsionTeamDto) {
+        val currentUserId = securityPort.getCurrentUserId()
 
         val team = queryTeamPort.queryTeamById(request.teamId) ?: throw TeamNotFoundException.EXCEPTION
 

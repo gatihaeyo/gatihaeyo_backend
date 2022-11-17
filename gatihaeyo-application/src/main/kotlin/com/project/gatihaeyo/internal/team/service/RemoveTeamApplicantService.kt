@@ -1,15 +1,15 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
-import com.project.gatihaeyo.global.security.SecurityService
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamApplicantPort
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamApplicantPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
-import com.project.gatihaeyo.internal.domain.exception.team.TeamApplicantNotFoundException
-import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundException
-import com.project.gatihaeyo.internal.domain.exception.team.TeamPermissionException
-import com.project.gatihaeyo.internal.dto.request.team.RemoveTeamApplicantRequest
+import com.project.gatihaeyo.internal.auth.port.SecurityPort
+import com.project.gatihaeyo.internal.team.dto.RemoveTeamApplicantDto
+import com.project.gatihaeyo.internal.team.exception.TeamApplicantNotFoundException
+import com.project.gatihaeyo.internal.team.exception.TeamNotFoundException
+import com.project.gatihaeyo.internal.team.exception.TeamPermissionException
+import com.project.gatihaeyo.internal.team.port.CommandTeamApplicantPort
+import com.project.gatihaeyo.internal.team.port.CommandTeamPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamApplicantPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamPort
 
 @BusinessService
 class RemoveTeamApplicantService(
@@ -17,11 +17,11 @@ class RemoveTeamApplicantService(
     private val queryTeamApplicantPort: QueryTeamApplicantPort,
     private val commandTeamPort: CommandTeamPort,
     private val commandTeamApplicantPort: CommandTeamApplicantPort,
-    private val securityService: SecurityService
+    private val securityPort: SecurityPort
 ) {
 
-    fun execute(request: RemoveTeamApplicantRequest) {
-        val currentUserId = securityService.getCurrentUserId()
+    fun execute(request: RemoveTeamApplicantDto) {
+        val currentUserId = securityPort.getCurrentUserId()
 
         val team = queryTeamPort.queryTeamById(request.teamId) ?: throw TeamNotFoundException.EXCEPTION
 

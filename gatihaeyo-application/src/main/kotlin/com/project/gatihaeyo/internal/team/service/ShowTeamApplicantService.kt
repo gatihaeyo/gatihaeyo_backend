@@ -1,21 +1,21 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
-import com.project.gatihaeyo.global.security.SecurityService
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamApplicantPort
-import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
-import com.project.gatihaeyo.internal.domain.exception.user.UserNotFoundException
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamApplicantResponse
+import com.project.gatihaeyo.internal.auth.port.SecurityPort
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamApplicantResponse
+import com.project.gatihaeyo.internal.team.port.QueryTeamApplicantPort
+import com.project.gatihaeyo.internal.user.exception.UserNotFoundException
+import com.project.gatihaeyo.internal.user.port.QueryUserPort
 
 @ReadOnlyBusinessService
 class ShowTeamApplicantService(
     private val queryTeamApplicantPort: QueryTeamApplicantPort,
     private val queryUserPort: QueryUserPort,
-    private val securityService: SecurityService
+    private val securityPort: SecurityPort
 ) {
 
     fun execute(): ShowTeamApplicantResponse {
-        val currentUserId = securityService.getCurrentUserId()
+        val currentUserId = securityPort.getCurrentUserId()
 
         val list = queryTeamApplicantPort.queryTeamApplicantListByUserId(currentUserId)
 

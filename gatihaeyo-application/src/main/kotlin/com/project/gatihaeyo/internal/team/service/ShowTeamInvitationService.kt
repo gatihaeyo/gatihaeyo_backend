@@ -1,21 +1,21 @@
-package com.project.gatihaeyo.internal.application.service.team
+package com.project.gatihaeyo.internal.team.service
 
 import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
-import com.project.gatihaeyo.global.security.SecurityService
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamInviteePort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
-import com.project.gatihaeyo.internal.domain.exception.team.TeamNotFoundException
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamInvitationResponse
+import com.project.gatihaeyo.internal.auth.port.SecurityPort
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamInvitationResponse
+import com.project.gatihaeyo.internal.team.exception.TeamNotFoundException
+import com.project.gatihaeyo.internal.team.port.QueryTeamInviteePort
+import com.project.gatihaeyo.internal.team.port.QueryTeamPort
 
 @ReadOnlyBusinessService
 class ShowTeamInvitationService(
     private val queryTeamPort: QueryTeamPort,
     private val queryTeamInviteePort: QueryTeamInviteePort,
-    private val securityService: SecurityService
+    private val securityPort: SecurityPort
 ) {
 
     fun execute(): ShowTeamInvitationResponse {
-        val currentUserId = securityService.getCurrentUserId()
+        val currentUserId = securityPort.getCurrentUserId()
 
         val list = queryTeamInviteePort.queryTeamInviteesByUserId(currentUserId)
 
