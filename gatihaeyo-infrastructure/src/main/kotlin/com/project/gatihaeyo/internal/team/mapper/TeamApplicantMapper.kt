@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.persistence.mapper.team
+package com.project.gatihaeyo.internal.team.mapper
 
 import com.project.gatihaeyo.global.GenericMapper
-import com.project.gatihaeyo.internal.domain.model.team.TeamApplicant
-import com.project.gatihaeyo.internal.persistence.model.team.TeamApplicantEntity
-import com.project.gatihaeyo.internal.persistence.repository.team.TeamJpaRepository
-import com.project.gatihaeyo.internal.persistence.repository.user.UserJpaRepository
+import com.project.gatihaeyo.internal.team.model.TeamApplicant
+import com.project.gatihaeyo.internal.team.model.TeamApplicantEntity
+import com.project.gatihaeyo.internal.team.repository.TeamJpaRepository
+import com.project.gatihaeyo.internal.user.repository.UserJpaRepository
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.springframework.beans.factory.annotation.Autowired

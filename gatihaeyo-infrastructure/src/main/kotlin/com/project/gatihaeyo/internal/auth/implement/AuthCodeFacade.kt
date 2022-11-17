@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.persistence.implement.auth
+package com.project.gatihaeyo.internal.auth.implement
 
-import com.project.gatihaeyo.internal.application.port.auth.CommandAuthCodePort
-import com.project.gatihaeyo.internal.application.port.auth.QueryAuthCodePort
-import com.project.gatihaeyo.internal.domain.model.auth.AuthCode
-import com.project.gatihaeyo.internal.persistence.mapper.auth.AuthCodeMapper
-import com.project.gatihaeyo.internal.persistence.repository.auth.AuthCodeRepository
+import com.project.gatihaeyo.internal.auth.model.AuthCode
+import com.project.gatihaeyo.internal.auth.port.CommandAuthCodePort
+import com.project.gatihaeyo.internal.auth.port.QueryAuthCodePort
+import com.project.gatihaeyo.internal.auth.mapper.AuthCodeMapper
+import com.project.gatihaeyo.internal.auth.repository.AuthCodeRepository
 import org.springframework.stereotype.Component
 
 @Component

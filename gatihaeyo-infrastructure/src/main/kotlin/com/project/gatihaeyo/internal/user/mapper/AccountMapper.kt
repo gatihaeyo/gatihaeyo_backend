@@ -1,9 +1,9 @@
-package com.project.gatihaeyo.internal.persistence.mapper.user
+package com.project.gatihaeyo.internal.user.mapper
 
 import com.project.gatihaeyo.global.GenericMapper
-import com.project.gatihaeyo.internal.domain.model.user.Account
-import com.project.gatihaeyo.internal.persistence.model.user.AccountEntity
-import com.project.gatihaeyo.internal.persistence.repository.user.UserJpaRepository
+import com.project.gatihaeyo.internal.user.model.Account
+import com.project.gatihaeyo.internal.user.model.AccountEntity
+import com.project.gatihaeyo.internal.user.repository.UserJpaRepository
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.springframework.beans.factory.annotation.Autowired
