@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.application.port.team
+package com.project.gatihaeyo.internal.team.port
 
 import java.util.UUID
 

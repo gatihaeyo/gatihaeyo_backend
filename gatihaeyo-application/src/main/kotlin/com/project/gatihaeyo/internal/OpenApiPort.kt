@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.application.port
+package com.project.gatihaeyo.internal
 
-import com.project.gatihaeyo.external.openapi.dto.InfoRecordDto
+import com.project.gatihaeyo.internal.user.dto.InfoRecordDto
 
 interface OpenApiPort {
 

@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.application.port.team
+package com.project.gatihaeyo.internal.team.port
 
-import com.project.gatihaeyo.internal.domain.model.team.TeamInvitee
+import com.project.gatihaeyo.internal.team.model.TeamInvitee
 import java.util.UUID
 
 interface CommandTeamInviteePort {

@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.application.port.team
+package com.project.gatihaeyo.internal.team.port
 
-import com.project.gatihaeyo.internal.domain.model.team.TeamMember
+import com.project.gatihaeyo.internal.team.model.TeamMember
 import java.util.UUID
 
 interface QueryTeamMemberPort {
