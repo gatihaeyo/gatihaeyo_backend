@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.external.openapi.dto
+package com.project.gatihaeyo.internal.user.dto
 
 data class InfoRecordDto(
     val type: String? = null,
