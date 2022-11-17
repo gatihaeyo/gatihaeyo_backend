@@ -1,9 +1,9 @@
-package com.project.gatihaeyo.internal.application.service.image
+package com.project.gatihaeyo.internal.image.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
-import com.project.gatihaeyo.internal.application.port.image.ManageImagePort
-import com.project.gatihaeyo.internal.domain.exception.image.CompatibleFileException
-import com.project.gatihaeyo.internal.dto.request.image.UploadImageRequest
+import com.project.gatihaeyo.internal.image.dto.UploadImageDto
+import com.project.gatihaeyo.internal.image.exception.CompatibleFileException
+import com.project.gatihaeyo.internal.image.port.ManageImagePort
 import org.springframework.web.multipart.MultipartFile
 
 @BusinessService
@@ -11,7 +11,7 @@ class UploadImageService(
     private val manageImagePort: ManageImagePort
 ) {
 
-    fun execute(request: UploadImageRequest): String {
+    fun execute(request: UploadImageDto): String {
         if (!isCompatibleFile(request.image)) {
             throw CompatibleFileException.EXCEPTION
         }
