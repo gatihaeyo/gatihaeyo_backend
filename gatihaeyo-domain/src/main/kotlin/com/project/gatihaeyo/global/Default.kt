@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.global.annotation
+package com.project.gatihaeyo.global
 
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.CONSTRUCTOR)
