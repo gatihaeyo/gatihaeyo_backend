@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.application.service.user
+package com.project.gatihaeyo.internal.user.service
 
 import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
-import com.project.gatihaeyo.internal.application.port.user.QueryAccountPort
-import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
-import com.project.gatihaeyo.internal.domain.exception.user.UserNotFoundException
-import com.project.gatihaeyo.internal.dto.response.user.UserInfoResponse
+import com.project.gatihaeyo.internal.user.dto.response.UserInfoResponse
+import com.project.gatihaeyo.internal.user.exception.UserNotFoundException
+import com.project.gatihaeyo.internal.user.port.QueryAccountPort
+import com.project.gatihaeyo.internal.user.port.QueryUserPort
 import java.util.UUID
 
 @ReadOnlyBusinessService
