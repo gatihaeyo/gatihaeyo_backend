@@ -1,8 +1,8 @@
-package com.project.gatihaeyo.internal.presentation.filter
+package com.project.gatihaeyo.global.filter
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.project.gatihaeyo.global.GlobalException
 import com.project.gatihaeyo.global.error.ErrorProperty
-import com.project.gatihaeyo.global.exception.GlobalException
 import com.project.gatihaeyo.global.error.dto.ErrorResponse
 import com.project.gatihaeyo.global.exception.InternalServerErrorException
 import org.springframework.http.MediaType

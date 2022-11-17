@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.presentation.filter
+package com.project.gatihaeyo.global.filter
 
 import com.project.gatihaeyo.global.security.token.JwtComponent
 import com.project.gatihaeyo.global.security.token.JwtParser
