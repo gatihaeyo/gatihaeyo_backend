@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.domain.model.user
+package com.project.gatihaeyo.internal.user.model
 
 import java.util.UUID
 

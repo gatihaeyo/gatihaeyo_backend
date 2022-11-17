@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.domain.model.auth
+package com.project.gatihaeyo.internal.auth.model
 
-import com.project.gatihaeyo.global.annotation.Default
+import com.project.gatihaeyo.global.Default
 import net.bytebuddy.utility.RandomString
 
 class AuthCode @Default constructor(

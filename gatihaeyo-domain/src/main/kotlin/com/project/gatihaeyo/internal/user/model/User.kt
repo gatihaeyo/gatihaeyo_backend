@@ -1,9 +1,9 @@
-package com.project.gatihaeyo.internal.domain.model.user
+package com.project.gatihaeyo.internal.user.model
 
-import com.project.gatihaeyo.internal.domain.model.auth.Authority
+import com.project.gatihaeyo.internal.auth.model.Authority
 import java.lang.System.getenv
 import java.time.LocalDateTime
-import java.util.*
+import java.util.UUID
 
 data class User(
     val id: UUID = UUID(0, 0),
@@ -18,11 +18,13 @@ data class User(
 
     val profileImagePath: String,
 
-    val deleteAt: LocalDateTime? = null
+    val deleteAt: LocalDateTime? = null,
+
+    val friendCount: Int = 0
 ) {
     companion object {
         @JvmField
-        val defaultProfile = getenv("USER_DEFAULT_PROFILE")!!
+        val DEFAULT_IMAGE = getenv("USER_DEFAULT_PROFILE")!!
     }
 
 }

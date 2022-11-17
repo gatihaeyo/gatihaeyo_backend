@@ -1,7 +1,7 @@
-package com.project.gatihaeyo.internal.domain.model.team
+package com.project.gatihaeyo.internal.team.model
 
-import com.project.gatihaeyo.global.annotation.Default
-import com.project.gatihaeyo.internal.domain.model.Category
+import com.project.gatihaeyo.global.Default
+import com.project.gatihaeyo.internal.Category
 import java.time.LocalDateTime
 import java.util.UUID
 
