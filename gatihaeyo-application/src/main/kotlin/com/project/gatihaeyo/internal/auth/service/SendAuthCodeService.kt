@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.application.service.auth
+package com.project.gatihaeyo.internal.auth.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
-import com.project.gatihaeyo.internal.application.port.auth.CommandAuthCodePort
-import com.project.gatihaeyo.internal.application.port.auth.SendAuthCodePort
-import com.project.gatihaeyo.internal.domain.model.auth.AuthCode
-import com.project.gatihaeyo.internal.dto.request.auth.SendAuthCodeRequest
+import com.project.gatihaeyo.internal.auth.dto.SendAuthCodeDto
+import com.project.gatihaeyo.internal.auth.model.AuthCode
+import com.project.gatihaeyo.internal.auth.port.CommandAuthCodePort
+import com.project.gatihaeyo.internal.auth.port.SendAuthCodePort
 
 @BusinessService
 class SendAuthCodeService(
@@ -12,7 +12,7 @@ class SendAuthCodeService(
     private val sendAuthCodePort: SendAuthCodePort
 ) {
 
-    fun execute(request: SendAuthCodeRequest) {
+    fun execute(request: SendAuthCodeDto) {
         val authCode = commandAuthCodePort.save(
             AuthCode(request.email)
         )
