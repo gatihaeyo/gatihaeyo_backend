@@ -9,7 +9,13 @@ class ErrorElement(
 ) {
 
     companion object {
-        fun of(field: String, value: String, reason: String) = listOf(ErrorElement(field, value, reason))
+        fun of(field: String, value: String, reason: String) = listOf(
+            ErrorElement(
+                field,
+                value,
+                reason
+            )
+        )
 
         fun of(bindingResult: BindingResult) = bindingResult.fieldErrors.map {
             ErrorElement(it.field, it.rejectedValue.toString(), it.defaultMessage!!)

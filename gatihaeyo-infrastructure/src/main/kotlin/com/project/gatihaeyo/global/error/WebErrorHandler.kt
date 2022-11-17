@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
 import javax.validation.ConstraintViolationException
 
 @RestControllerAdvice
@@ -24,6 +25,12 @@ class WebErrorHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     protected fun handleMethodArgumentNotValidException(exception: MethodArgumentNotValidException): ErrorResponse? {
         return ErrorResponse.of(exception.bindingResult)
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    protected fun handleMethodArgumentTypeMismatchException(exception: MethodArgumentTypeMismatchException): ErrorResponse? {
+        return ErrorResponse.of(exception)
     }
 
     @ExceptionHandler(ConstraintViolationException::class)
