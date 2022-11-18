@@ -1,32 +1,39 @@
-package com.project.gatihaeyo.internal.presentation
+package com.project.gatihaeyo.team
 
-import com.project.gatihaeyo.internal.application.service.team.ApplyTeamService
-import com.project.gatihaeyo.internal.application.service.team.CreateTeamService
-import com.project.gatihaeyo.internal.application.service.team.DelegateTeamService
-import com.project.gatihaeyo.internal.application.service.team.ExpulsionTeamService
-import com.project.gatihaeyo.internal.application.service.team.InviteTeamService
-import com.project.gatihaeyo.internal.application.service.team.ListTopTeamService
-import com.project.gatihaeyo.internal.application.service.team.ReceiveTeamApplicantService
-import com.project.gatihaeyo.internal.application.service.team.ReceiveTeamInvitationService
-import com.project.gatihaeyo.internal.application.service.team.RemoveTeamApplicantService
-import com.project.gatihaeyo.internal.application.service.team.RemoveTeamInvitationService
-import com.project.gatihaeyo.internal.application.service.team.ShowTeamInvitationService
-import com.project.gatihaeyo.internal.application.service.team.ShowTeamListService
-import com.project.gatihaeyo.internal.application.service.team.ShowTeamMemberService
-import com.project.gatihaeyo.internal.application.service.team.ShowTeamService
-import com.project.gatihaeyo.internal.application.service.team.TeamDissipateService
-import com.project.gatihaeyo.internal.application.service.team.TeamWithdrawalService
-import com.project.gatihaeyo.internal.dto.request.team.CreateTeamRequest
-import com.project.gatihaeyo.internal.dto.request.team.DelegateTeamRequest
-import com.project.gatihaeyo.internal.dto.request.team.ExpulsionTeamRequest
-import com.project.gatihaeyo.internal.dto.request.team.InviteTeamRequest
-import com.project.gatihaeyo.internal.dto.request.team.ReceiveTeamApplicantRequest
-import com.project.gatihaeyo.internal.dto.request.team.RemoveTeamApplicantRequest
-import com.project.gatihaeyo.internal.dto.request.team.ShowTeamListRequest
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamInvitationResponse
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamListResponse
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamMemberResponse
-import com.project.gatihaeyo.internal.dto.response.team.ShowTeamResponse
+import com.project.gatihaeyo.internal.team.dto.CreateTeamDto
+import com.project.gatihaeyo.internal.team.dto.DelegateTeamDto
+import com.project.gatihaeyo.internal.team.dto.ExpulsionTeamDto
+import com.project.gatihaeyo.internal.team.dto.InviteTeamDto
+import com.project.gatihaeyo.internal.team.dto.ReceiveTeamApplicantDto
+import com.project.gatihaeyo.internal.team.dto.RemoveTeamApplicantDto
+import com.project.gatihaeyo.internal.team.dto.ShowTeamListDto
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamInvitationResponse
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamListResponse
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamMemberResponse
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamResponse
+import com.project.gatihaeyo.internal.team.service.ApplyTeamService
+import com.project.gatihaeyo.internal.team.service.CreateTeamService
+import com.project.gatihaeyo.internal.team.service.DelegateTeamService
+import com.project.gatihaeyo.internal.team.service.ExpulsionTeamService
+import com.project.gatihaeyo.internal.team.service.InviteTeamService
+import com.project.gatihaeyo.internal.team.service.ListTopTeamService
+import com.project.gatihaeyo.internal.team.service.ReceiveTeamApplicantService
+import com.project.gatihaeyo.internal.team.service.ReceiveTeamInvitationService
+import com.project.gatihaeyo.internal.team.service.RemoveTeamApplicantService
+import com.project.gatihaeyo.internal.team.service.RemoveTeamInvitationService
+import com.project.gatihaeyo.internal.team.service.ShowTeamInvitationService
+import com.project.gatihaeyo.internal.team.service.ShowTeamListService
+import com.project.gatihaeyo.internal.team.service.ShowTeamMemberService
+import com.project.gatihaeyo.internal.team.service.ShowTeamService
+import com.project.gatihaeyo.internal.team.service.TeamDissipateService
+import com.project.gatihaeyo.internal.team.service.TeamWithdrawalService
+import com.project.gatihaeyo.team.dto.request.CreateTeamRequest
+import com.project.gatihaeyo.team.dto.request.DelegateTeamRequest
+import com.project.gatihaeyo.team.dto.request.ExpulsionTeamRequest
+import com.project.gatihaeyo.team.dto.request.InviteTeamRequest
+import com.project.gatihaeyo.team.dto.request.ReceiveTeamApplicantRequest
+import com.project.gatihaeyo.team.dto.request.RemoveTeamApplicantRequest
+import com.project.gatihaeyo.team.dto.request.ShowTeamListRequest
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -63,7 +70,16 @@ class TeamController(
 
     @GetMapping
     fun showTeamList(@Valid request: ShowTeamListRequest): ShowTeamListResponse {
-        return showTeamListService.execute(request)
+        val (size, category, order, page) = request
+
+        return showTeamListService.execute(
+            ShowTeamListDto(
+                size = size,
+                page = page - 1,
+                category = category,
+                order = order
+            )
+        )
     }
 
     @GetMapping("/{team-id}")
@@ -84,13 +100,27 @@ class TeamController(
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createTeam(@Valid @RequestBody request: CreateTeamRequest) {
-        createTeamService.execute(request)
+        val (title, content, category, personnel) = request
+
+        createTeamService.execute(
+            CreateTeamDto(
+                title = title,
+                content = content,
+                category = category,
+                personnel = personnel
+            )
+        )
     }
 
     @PostMapping("/invitation")
     @ResponseStatus(HttpStatus.CREATED)
     fun inviteTeam(@Valid @RequestBody request: InviteTeamRequest) {
-        inviteTeamService.execute(request)
+        inviteTeamService.execute(
+            InviteTeamDto(
+                userId = request.userId,
+                teamId = request.teamId
+            )
+        )
     }
 
     @PostMapping("/list-top/{team-id}")
@@ -107,12 +137,22 @@ class TeamController(
 
     @PutMapping("/delegation")
     fun delegateMaster(@Valid @RequestBody request: DelegateTeamRequest) {
-        delegateTeamService.execute(request)
+        delegateTeamService.execute(
+            DelegateTeamDto(
+                userId = request.userId,
+                teamId = request.teamId
+            )
+        )
     }
 
     @PutMapping("/participation")
     fun receiveTeamApplication(@Valid @RequestBody request: ReceiveTeamApplicantRequest) {
-        receiveTeamApplicantService.execute(request)
+        receiveTeamApplicantService.execute(
+            ReceiveTeamApplicantDto(
+                userId = request.userId,
+                teamId = request.teamId
+            )
+        )
     }
 
     @PutMapping("/invitation/{team-id}")
@@ -122,8 +162,13 @@ class TeamController(
 
     @DeleteMapping("/expulsion")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun expulsionTeam(@Valid @RequestBody request:ExpulsionTeamRequest) {
-        expulsionTeamService.execute(request)
+    fun expulsionTeam(@Valid @RequestBody request: ExpulsionTeamRequest) {
+        expulsionTeamService.execute(
+            ExpulsionTeamDto(
+                userId = request.userId,
+                teamId = request.teamId
+            )
+        )
     }
 
     @DeleteMapping("/dissolution/{team-id}")
@@ -141,7 +186,12 @@ class TeamController(
     @DeleteMapping("/participation/removal")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun removeApplicant(@Valid request: RemoveTeamApplicantRequest) {
-        removeTeamApplicantService.execute(request)
+        removeTeamApplicantService.execute(
+            RemoveTeamApplicantDto(
+                userId = request.userId,
+                teamId = request.teamId
+            )
+        )
     }
 
     @DeleteMapping("/invitation/removal/{team-id}")

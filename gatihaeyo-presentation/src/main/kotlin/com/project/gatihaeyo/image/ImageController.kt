@@ -1,8 +1,9 @@
-package com.project.gatihaeyo.internal.presentation
+package com.project.gatihaeyo.image
 
-import com.project.gatihaeyo.internal.application.service.image.UploadImageService
-import com.project.gatihaeyo.internal.dto.request.image.UploadImageRequest
-import com.project.gatihaeyo.internal.dto.response.image.UploadImageResponse
+import com.project.gatihaeyo.image.dto.request.UploadImageRequest
+import com.project.gatihaeyo.image.dto.response.UploadImageResponse
+import com.project.gatihaeyo.internal.image.dto.UploadImageDto
+import com.project.gatihaeyo.internal.image.service.UploadImageService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,7 +21,7 @@ class ImageController(
     @ResponseStatus(HttpStatus.CREATED)
     fun upload(@Valid request: UploadImageRequest): UploadImageResponse {
         return UploadImageResponse(
-            uploadImageService.execute(request)
+            uploadImageService.execute(UploadImageDto(request.image))
         )
     }
 
