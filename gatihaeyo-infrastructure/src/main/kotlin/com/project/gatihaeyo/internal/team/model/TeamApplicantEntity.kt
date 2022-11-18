@@ -1,7 +1,7 @@
-package com.project.gatihaeyo.internal.persistence.model.team
+package com.project.gatihaeyo.internal.team.model
 
-import com.project.gatihaeyo.internal.persistence.model.BaseTimeEntity
-import com.project.gatihaeyo.internal.persistence.model.user.UserEntity
+import com.project.gatihaeyo.internal.BaseTimeEntity
+import com.project.gatihaeyo.internal.user.model.UserEntity
 import javax.persistence.EmbeddedId
 import javax.persistence.Entity
 import javax.persistence.FetchType
