@@ -1,10 +1,10 @@
-package com.gatihaeyo
+package com.project.gatihaeyo
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class GatihaeyoInfrastructureApplicationTests {
+class GatihaeyoDomainApplicationTests {
 
     @Test
     fun contextLoads() {
