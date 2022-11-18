@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.persistence.model.auth
+package com.project.gatihaeyo.internal.auth.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.redis.core.RedisHash
