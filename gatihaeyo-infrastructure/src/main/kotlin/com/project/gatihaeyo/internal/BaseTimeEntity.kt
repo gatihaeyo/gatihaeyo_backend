@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.persistence.model
+package com.project.gatihaeyo.internal
 
 import java.time.LocalDateTime
 import javax.persistence.Column

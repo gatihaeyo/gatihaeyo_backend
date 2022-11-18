@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.persistence.model
+package com.project.gatihaeyo.internal
 
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
