@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.persistence.implement.team
+package com.project.gatihaeyo.internal.team.implement
 
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamDelayPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamDelayPort
-import com.project.gatihaeyo.internal.domain.model.team.TeamDelay
-import com.project.gatihaeyo.internal.persistence.mapper.team.TeamDelayMapper
-import com.project.gatihaeyo.internal.persistence.repository.team.TeamDelayRepository
+import com.project.gatihaeyo.internal.team.mapper.TeamDelayMapper
+import com.project.gatihaeyo.internal.team.model.TeamDelay
+import com.project.gatihaeyo.internal.team.port.CommandTeamDelayPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamDelayPort
+import com.project.gatihaeyo.internal.team.repository.TeamDelayRepository
 import org.springframework.stereotype.Component
 import java.util.UUID
 

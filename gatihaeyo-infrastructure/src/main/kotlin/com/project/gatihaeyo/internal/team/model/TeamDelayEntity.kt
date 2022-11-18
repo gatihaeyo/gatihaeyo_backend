@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.persistence.model.team
+package com.project.gatihaeyo.internal.team.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.redis.core.RedisHash
