@@ -17,3 +17,7 @@ allOpen {
     annotation("com.project.gatihaeyo.global.annotation.BusinessService")
     annotation("com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService")
 }
+
+tasks.getByName<Jar>("bootJar") {
+    enabled = false
+}
