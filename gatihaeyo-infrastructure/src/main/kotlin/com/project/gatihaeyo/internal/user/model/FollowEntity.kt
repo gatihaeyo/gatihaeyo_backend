@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.persistence.model.user
+package com.project.gatihaeyo.internal.user.model
 
-import com.project.gatihaeyo.internal.persistence.model.BaseTimeEntity
+import com.project.gatihaeyo.internal.BaseTimeEntity
 import javax.persistence.EmbeddedId
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -10,10 +10,10 @@ import javax.persistence.MapsId
 import javax.persistence.Table
 
 @Entity
-@Table(name = "tb_friend")
-class FriendEntity(
+@Table(name = "tb_follow")
+class FollowEntity(
     @EmbeddedId
-    val key: FriendEntityId,
+    val key: FollowEntityId,
 
     @MapsId("userId")
     @ManyToOne(fetch = FetchType.LAZY)
