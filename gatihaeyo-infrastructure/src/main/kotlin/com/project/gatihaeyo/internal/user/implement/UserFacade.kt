@@ -1,12 +1,12 @@
-package com.project.gatihaeyo.internal.persistence.implement.user
+package com.project.gatihaeyo.internal.user.implement
 
-import com.project.gatihaeyo.internal.application.port.user.CommandUserPort
-import com.project.gatihaeyo.internal.application.port.user.QueryUserPort
-import com.project.gatihaeyo.internal.domain.model.user.User
-import com.project.gatihaeyo.internal.persistence.mapper.user.UserMapper
-import com.project.gatihaeyo.internal.persistence.repository.user.UserJpaRepository
+import com.project.gatihaeyo.internal.user.mapper.UserMapper
+import com.project.gatihaeyo.internal.user.model.User
+import com.project.gatihaeyo.internal.user.port.CommandUserPort
+import com.project.gatihaeyo.internal.user.port.QueryUserPort
+import com.project.gatihaeyo.internal.user.repository.UserJpaRepository
 import org.springframework.stereotype.Component
-import java.util.*
+import java.util.UUID
 
 @Component
 class UserFacade(
@@ -14,10 +14,10 @@ class UserFacade(
     private val userJpaRepository: UserJpaRepository
 ) : QueryUserPort, CommandUserPort {
 
-    override fun save(model: User): User {
+    override fun saveUser(user: User): User {
         return userMapper.toDomain(
             userJpaRepository.save(
-                userMapper.toEntity(model)
+                userMapper.toEntity(user)
             )
         )!!
     }

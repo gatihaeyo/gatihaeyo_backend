@@ -1,11 +1,9 @@
-package com.project.gatihaeyo.internal.persistence.repository.user
+package com.project.gatihaeyo.internal.user.repository
 
-import com.project.gatihaeyo.internal.persistence.model.user.UserEntity
+import com.project.gatihaeyo.internal.user.model.UserEntity
 import org.springframework.data.repository.CrudRepository
-import org.springframework.stereotype.Repository
 import java.util.UUID
 
-@Repository
 interface UserJpaRepository : CrudRepository<UserEntity, UUID> {
 
     fun queryUserEntityById(id: UUID): UserEntity?

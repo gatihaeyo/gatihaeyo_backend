@@ -1,7 +1,7 @@
-package com.project.gatihaeyo.internal.persistence.model.user
+package com.project.gatihaeyo.internal.user.model
 
-import com.project.gatihaeyo.internal.persistence.model.BaseEntity
-import com.project.gatihaeyo.internal.domain.model.auth.Authority
+import com.project.gatihaeyo.internal.BaseEntity
+import com.project.gatihaeyo.internal.auth.model.Authority
 import org.hibernate.validator.constraints.Length
 import org.jetbrains.annotations.NotNull
 import java.time.LocalDateTime
@@ -34,7 +34,11 @@ class UserEntity(
     @Enumerated(EnumType.STRING)
     val authority: Authority,
 
+    @field:NotNull
     val profileImagePath: String,
+
+    @field:NotNull
+    val friendCount: Int,
 
     val suspendAt: LocalDateTime?
 ) : BaseEntity(id)
