@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.persistence.model.auth
+package com.project.gatihaeyo.internal.auth.model
 
-import com.project.gatihaeyo.internal.domain.model.auth.Authority
+import com.project.gatihaeyo.internal.auth.model.Authority
 import org.springframework.data.annotation.Id
 import org.springframework.data.redis.core.RedisHash
 import org.springframework.data.redis.core.TimeToLive
