@@ -1,7 +1,7 @@
-package com.project.gatihaeyo.internal.persistence.repository.team
+package com.project.gatihaeyo.internal.team.repository
 
-import com.project.gatihaeyo.internal.persistence.model.team.TeamApplicantEntity
-import com.project.gatihaeyo.internal.persistence.model.team.TeamUserEntityId
+import com.project.gatihaeyo.internal.team.model.TeamApplicantEntity
+import com.project.gatihaeyo.internal.team.model.TeamUserEntityId
 import org.springframework.data.repository.CrudRepository
 import java.util.UUID
 
