@@ -1,16 +1,17 @@
-package com.project.gatihaeyo.internal.persistence.implement.team
+package com.project.gatihaeyo.internal.team.implement
 
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamPort
-import com.project.gatihaeyo.internal.domain.model.Category
-import com.project.gatihaeyo.internal.domain.model.Order
-import com.project.gatihaeyo.internal.domain.model.team.Team
-import com.project.gatihaeyo.internal.persistence.mapper.team.TeamMapper
-import com.project.gatihaeyo.internal.persistence.model.team.QTeamEntity.teamEntity
-import com.project.gatihaeyo.internal.persistence.repository.team.TeamJpaRepository
+import com.project.gatihaeyo.internal.Category
+import com.project.gatihaeyo.internal.Order
+import com.project.gatihaeyo.internal.team.mapper.TeamMapper
+import com.project.gatihaeyo.internal.team.model.QTeamEntity.teamEntity
+import com.project.gatihaeyo.internal.team.model.Team
+import com.project.gatihaeyo.internal.team.model.TeamEntity
+import com.project.gatihaeyo.internal.team.port.CommandTeamPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamPort
+import com.project.gatihaeyo.internal.team.repository.TeamJpaRepository
+import com.querydsl.jpa.impl.JPAQuery
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.stereotype.Component
-import java.time.LocalDateTime
 import java.util.UUID
 
 @Component
@@ -38,14 +39,15 @@ class TeamFacade(
         return teamJpaRepository.existsById(id)
     }
 
-    override fun queryTeamList(size: Int, last: LocalDateTime, order: Order, category: Category): List<Team> {
+    override fun queryTeamList(size: Int, page: Long, order: Order, category: Category): List<Team> {
         return jpaQueryFactory
             .selectFrom(teamEntity)
             .where(
                 teamEntity.currentPersonnel.ne(teamEntity.personnel)
                     .and(teamEntity.category.eq(category))
-                    .and(teamEntity.updateAt.before(last)))
-            .orderBy(order.sort)
+            )
+            .orderTeam(order)
+            .offset(page * size)
             .limit(size.toLong())
             .fetch()
             .map {
@@ -53,5 +55,11 @@ class TeamFacade(
             }
     }
 
+    private fun JPAQuery<TeamEntity>.orderTeam(order: Order) : JPAQuery<TeamEntity> {
+        return when (order) {
+            Order.PERSONNEL -> orderBy(teamEntity.currentPersonnel.desc())
+            Order.RECENT -> orderBy(teamEntity.updateAt.desc())
+        }
+    }
 
 }

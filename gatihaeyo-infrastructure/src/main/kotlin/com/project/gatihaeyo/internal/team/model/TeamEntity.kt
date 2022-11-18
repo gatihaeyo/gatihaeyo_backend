@@ -1,8 +1,8 @@
-package com.project.gatihaeyo.internal.persistence.model.team
+package com.project.gatihaeyo.internal.team.model
 
-import com.project.gatihaeyo.internal.domain.model.Category
-import com.project.gatihaeyo.internal.persistence.model.BaseEntity
-import com.project.gatihaeyo.internal.persistence.model.user.UserEntity
+import com.project.gatihaeyo.internal.Category
+import com.project.gatihaeyo.internal.BaseEntity
+import com.project.gatihaeyo.internal.user.model.UserEntity
 import java.time.LocalDateTime
 import java.util.UUID
 import javax.persistence.Column
