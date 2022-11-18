@@ -1,6 +1,6 @@
-package com.project.gatihaeyo.internal.persistence.model.user
+package com.project.gatihaeyo.internal.user.model
 
-import com.project.gatihaeyo.internal.domain.model.Category
+import com.project.gatihaeyo.internal.Category
 import java.io.Serializable
 import javax.persistence.Embeddable
 import javax.persistence.EnumType

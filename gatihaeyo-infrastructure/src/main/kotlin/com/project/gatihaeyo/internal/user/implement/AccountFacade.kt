@@ -1,14 +1,14 @@
-package com.project.gatihaeyo.internal.persistence.implement.user
+package com.project.gatihaeyo.internal.user.implement
 
-import com.project.gatihaeyo.internal.application.port.user.CommandAccountPort
-import com.project.gatihaeyo.internal.application.port.user.QueryAccountPort
-import com.project.gatihaeyo.internal.domain.model.user.Account
-import com.project.gatihaeyo.internal.domain.model.Category
-import com.project.gatihaeyo.internal.domain.model.user.User
-import com.project.gatihaeyo.internal.persistence.mapper.user.AccountMapper
-import com.project.gatihaeyo.internal.persistence.mapper.user.UserMapper
-import com.project.gatihaeyo.internal.persistence.model.user.AccountEntityId
-import com.project.gatihaeyo.internal.persistence.repository.user.AccountJpaRepository
+import com.project.gatihaeyo.internal.Category
+import com.project.gatihaeyo.internal.user.mapper.AccountMapper
+import com.project.gatihaeyo.internal.user.mapper.UserMapper
+import com.project.gatihaeyo.internal.user.model.AccountEntityId
+import com.project.gatihaeyo.internal.user.repository.AccountJpaRepository
+import com.project.gatihaeyo.internal.user.model.Account
+import com.project.gatihaeyo.internal.user.model.User
+import com.project.gatihaeyo.internal.user.port.CommandAccountPort
+import com.project.gatihaeyo.internal.user.port.QueryAccountPort
 import org.springframework.stereotype.Component
 import java.util.UUID
 

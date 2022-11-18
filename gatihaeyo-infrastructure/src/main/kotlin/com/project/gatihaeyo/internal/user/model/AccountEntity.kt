@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.persistence.model.user
+package com.project.gatihaeyo.internal.user.model
 
 import javax.persistence.EmbeddedId
 import javax.persistence.Entity
