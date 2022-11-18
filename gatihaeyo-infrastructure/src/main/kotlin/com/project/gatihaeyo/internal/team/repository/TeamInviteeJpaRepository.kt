@@ -1,15 +1,13 @@
-package com.project.gatihaeyo.internal.persistence.repository.team
+package com.project.gatihaeyo.internal.team.repository
 
-import com.project.gatihaeyo.internal.persistence.model.team.TeamInviteeEntity
-import com.project.gatihaeyo.internal.persistence.model.team.TeamUserEntityId
+import com.project.gatihaeyo.internal.team.model.TeamInviteeEntity
+import com.project.gatihaeyo.internal.team.model.TeamUserEntityId
 import org.springframework.data.repository.CrudRepository
 import java.util.UUID
 
 interface TeamInviteeJpaRepository : CrudRepository<TeamInviteeEntity, TeamUserEntityId> {
 
     fun queryTeamInviteeEntitiesByUserId(userId: UUID): List<TeamInviteeEntity>
-
-    fun deleteTeamInviteeEntityByKey(key: TeamUserEntityId)
 
     fun deleteTeamInviteeEntitiesByTeamId(teamId: UUID)
 

@@ -1,11 +1,11 @@
-package com.project.gatihaeyo.internal.persistence.implement.team
+package com.project.gatihaeyo.internal.team.implement
 
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamInviteePort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamInviteePort
-import com.project.gatihaeyo.internal.domain.model.team.TeamInvitee
-import com.project.gatihaeyo.internal.persistence.mapper.team.TeamInviteeMapper
-import com.project.gatihaeyo.internal.persistence.model.team.TeamUserEntityId
-import com.project.gatihaeyo.internal.persistence.repository.team.TeamInviteeJpaRepository
+import com.project.gatihaeyo.internal.team.mapper.TeamInviteeMapper
+import com.project.gatihaeyo.internal.team.model.TeamUserEntityId
+import com.project.gatihaeyo.internal.team.repository.TeamInviteeJpaRepository
+import com.project.gatihaeyo.internal.team.model.TeamInvitee
+import com.project.gatihaeyo.internal.team.port.CommandTeamInviteePort
+import com.project.gatihaeyo.internal.team.port.QueryTeamInviteePort
 import org.springframework.stereotype.Component
 import java.util.UUID
 
@@ -24,7 +24,7 @@ class TeamInviteeFacade(
     )!!
 
     override fun deleteTeamInviteeByUserIdAndTeamId(userId: UUID, teamId: UUID) {
-        teamInviteeJpaRepository.deleteTeamInviteeEntityByKey(
+        teamInviteeJpaRepository.deleteById(
             TeamUserEntityId(
                 userId = userId,
                 teamId = teamId
