@@ -1,10 +1,10 @@
-package com.project.gatihaeyo.internal.persistence.implement.team
+package com.project.gatihaeyo.internal.team.implement
 
-import com.project.gatihaeyo.internal.application.port.team.CommandTeamMemberPort
-import com.project.gatihaeyo.internal.application.port.team.QueryTeamMemberPort
-import com.project.gatihaeyo.internal.domain.model.team.TeamMember
-import com.project.gatihaeyo.internal.persistence.mapper.team.TeamMemberMapper
-import com.project.gatihaeyo.internal.persistence.repository.team.TeamMemberJpaRepository
+import com.project.gatihaeyo.internal.team.mapper.TeamMemberMapper
+import com.project.gatihaeyo.internal.team.repository.TeamMemberJpaRepository
+import com.project.gatihaeyo.internal.team.model.TeamMember
+import com.project.gatihaeyo.internal.team.port.CommandTeamMemberPort
+import com.project.gatihaeyo.internal.team.port.QueryTeamMemberPort
 import org.springframework.stereotype.Component
 import java.util.UUID
 
