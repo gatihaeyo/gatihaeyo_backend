@@ -6,7 +6,15 @@ enum class CategoryType(
     val value: Category
 ) {
 
-    LOL(Category.LOL),
-    PUBG(Category.PUBG)
+    LEAGUEOFLEGEND(Category.LEAGUEOFLEGEND),
+    BATTELGROUND(Category.BATTELGROUND),
+    LOSTARK(Category.LOSTARK),
+    VALORANT(Category.VALORANT),
+    OVERWATCH(Category.OVERWATCH),
+
+    NETFLIX(Category.NETFLIX),
+    DISNEY(Category.DISNEY),
+    WATCHA(Category.WATCHA),
+    TVING(Category.TVING)
 
 }

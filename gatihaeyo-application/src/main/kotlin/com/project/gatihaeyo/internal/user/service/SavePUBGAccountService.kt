@@ -23,7 +23,7 @@ class SavePUBGAccountService(
         commandGameAccountPort.save(
             Account(
                 userId = id,
-                type = Category.PUBG,
+                type = Category.BATTELGROUND,
                 name = request.name,
                 accountKey = key
             )

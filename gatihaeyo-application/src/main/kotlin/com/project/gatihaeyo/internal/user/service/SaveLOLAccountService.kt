@@ -23,7 +23,7 @@ class SaveLOLAccountService(
         commandGameAccountPort.save(
             Account(
                 userId = id,
-                type = Category.LOL,
+                type = Category.LEAGUEOFLEGEND,
                 name = request.name,
                 accountKey = key
             )

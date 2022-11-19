@@ -2,5 +2,14 @@ package com.project.gatihaeyo.internal
 
 enum class Category {
 
-    LOL, PUBG,
+    LEAGUEOFLEGEND,
+    BATTELGROUND,
+    OVERWATCH,
+    LOSTARK,
+    VALORANT,
+    NETFLIX,
+    WATCHA,
+    TVING,
+    DISNEY
+
 }
