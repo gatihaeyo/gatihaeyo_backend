@@ -23,8 +23,6 @@ data class Team @Default constructor(
     val applicantPersonnel: Int,
 
     val updateAt: LocalDateTime,
-
-    val createAt: LocalDateTime
 ) {
     constructor(master: UUID, title: String, content: String, category: Category, personnel: Int) : this(
         master = master,
@@ -34,7 +32,6 @@ data class Team @Default constructor(
         personnel = personnel,
         currentPersonnel = 1,
         applicantPersonnel = 0,
-        updateAt = LocalDateTime.now(),
-        createAt = LocalDateTime.now()
+        updateAt = LocalDateTime.now()
     )
 }

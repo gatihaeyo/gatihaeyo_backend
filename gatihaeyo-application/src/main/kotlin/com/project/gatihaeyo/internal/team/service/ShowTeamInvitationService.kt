@@ -26,7 +26,7 @@ class ShowTeamInvitationService(
                         id = team.id,
                         category = team.category,
                         title = team.title,
-                        inviteAt = it.createAt
+                        invitedAt = it.createdAt
                     )
                 } ?: throw TeamNotFoundException.EXCEPTION
             }

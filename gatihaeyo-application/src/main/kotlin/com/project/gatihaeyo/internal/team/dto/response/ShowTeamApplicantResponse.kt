@@ -10,6 +10,6 @@ data class ShowTeamApplicantResponse(
         val id: UUID,
         val nickname: String,
         val profileImagePath: String,
-        val applyAt: LocalDateTime
+        val appliedAt: LocalDateTime
     )
 }

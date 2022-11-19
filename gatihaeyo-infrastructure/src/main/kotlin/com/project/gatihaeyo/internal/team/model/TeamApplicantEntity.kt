@@ -2,6 +2,7 @@ package com.project.gatihaeyo.internal.team.model
 
 import com.project.gatihaeyo.internal.BaseTimeEntity
 import com.project.gatihaeyo.internal.user.model.UserEntity
+import java.time.LocalDateTime
 import javax.persistence.EmbeddedId
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -25,6 +26,8 @@ class TeamApplicantEntity(
     @MapsId("teamId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id", columnDefinition = "BINARY(16)", nullable = false)
-    val team: TeamEntity
+    val team: TeamEntity,
 
-) : BaseTimeEntity()
+    override val createdAt: LocalDateTime
+
+) : BaseTimeEntity(createdAt)

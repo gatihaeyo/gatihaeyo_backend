@@ -11,6 +11,6 @@ data class ShowTeamInvitationResponse(
         val id: UUID,
         val title: String,
         val category: Category,
-        val inviteAt: LocalDateTime
+        val invitedAt: LocalDateTime
     )
 }

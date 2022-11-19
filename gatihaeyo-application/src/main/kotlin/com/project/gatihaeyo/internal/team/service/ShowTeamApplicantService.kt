@@ -26,7 +26,7 @@ class ShowTeamApplicantService(
                         id = member.id,
                         nickname = member.nickname,
                         profileImagePath = member.profileImagePath,
-                        applyAt = it.createAt
+                        appliedAt = it.createdAt
                     )
                 } ?: throw UserNotFoundException.EXCEPTION
             }
