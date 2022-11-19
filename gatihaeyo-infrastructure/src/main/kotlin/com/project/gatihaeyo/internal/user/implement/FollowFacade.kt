@@ -22,9 +22,9 @@ class FollowFacade(
     private val jpaQueryFactory: JPAQueryFactory
 ) : CommandFollowPort, QueryFollowPort {
 
-    override fun saveFollow(friend: Follow) = followMapper.toDomain(
+    override fun saveFollow(follow: Follow) = followMapper.toDomain(
        followJpaRepository.save(
-           followMapper.toEntity(friend)
+           followMapper.toEntity(follow)
        )
     )!!
 
@@ -49,11 +49,11 @@ class FollowFacade(
             }
     }
 
-    override fun existsFollowByUserIdAndFollowId(userId: UUID, friendId: UUID): Boolean {
+    override fun existsFollowByUserIdAndFollowId(userId: UUID, followId: UUID): Boolean {
         return followJpaRepository.existsById(
             FollowEntityId(
                 userId = userId,
-                followId = friendId
+                followId = followId
             )
         )
     }

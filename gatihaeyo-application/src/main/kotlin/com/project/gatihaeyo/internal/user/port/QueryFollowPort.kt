@@ -7,5 +7,5 @@ interface QueryFollowPort {
 
     fun queryFollowListByUserId(userId: UUID): List<User>
 
-    fun existsFollowByUserIdAndFollowId(userId: UUID, friendId: UUID): Boolean
+    fun existsFollowByUserIdAndFollowId(userId: UUID, followId: UUID): Boolean
 }
