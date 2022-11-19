@@ -11,7 +11,7 @@ data class ShowTeamListRequest(
     val size: Int = 8,
 
     @field:NotNull
-    val category: CategoryType = CategoryType.LOL,
+    val category: CategoryType = CategoryType.LEAGUEOFLEGEND,
 
     @field:NotNull
     val order: OrderType = OrderType.RECENT,

@@ -27,8 +27,9 @@ class AccountInfoService(
         ) ?: throw AccountNotFoundException.EXCEPTION
 
         return when (account.type) {
-            Category.LOL -> openApiPort.getLOLInfo(account.accountKey)
-            Category.PUBG -> openApiPort.getPUBGInfo(account.accountKey)
+            Category.LEAGUEOFLEGEND -> openApiPort.getLOLInfo(account.accountKey)
+            Category.BATTELGROUND -> openApiPort.getPUBGInfo(account.accountKey)
+            else -> listOf()
         }
     }
 
