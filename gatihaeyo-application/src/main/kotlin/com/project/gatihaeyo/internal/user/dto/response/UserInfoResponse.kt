@@ -8,6 +8,7 @@ data class UserInfoResponse(
     val nickname: String,
     val email: String,
     val profileImagePath: String,
+    val followCount: Int,
     val accounts: List<AccountInfoResponse>
 ) {
     data class AccountInfoResponse(

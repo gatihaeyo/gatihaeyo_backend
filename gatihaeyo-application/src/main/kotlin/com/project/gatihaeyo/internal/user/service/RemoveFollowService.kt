@@ -2,37 +2,37 @@ package com.project.gatihaeyo.internal.user.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
 import com.project.gatihaeyo.internal.auth.port.SecurityPort
-import com.project.gatihaeyo.internal.user.exception.FriendNotFoundException
+import com.project.gatihaeyo.internal.user.exception.FollowNotFoundException
 import com.project.gatihaeyo.internal.user.exception.UserNotFoundException
-import com.project.gatihaeyo.internal.user.port.CommandFriendPort
+import com.project.gatihaeyo.internal.user.port.CommandFollowPort
 import com.project.gatihaeyo.internal.user.port.CommandUserPort
-import com.project.gatihaeyo.internal.user.port.QueryFriendPort
+import com.project.gatihaeyo.internal.user.port.QueryFollowPort
 import com.project.gatihaeyo.internal.user.port.QueryUserPort
 import java.util.UUID
 
 @BusinessService
 class RemoveFollowService(
-    private val queryFriendPort: QueryFriendPort,
+    private val queryFollowPort: QueryFollowPort,
     private val queryUserPort: QueryUserPort,
-    private val commandFriendPort: CommandFriendPort,
+    private val commandFollowPort: CommandFollowPort,
     private val commandUserPort: CommandUserPort,
     private val securityPort: SecurityPort
 ) {
 
-    fun execute(friendId: UUID) {
+    fun execute(followId: UUID) {
         val currentUserId = securityPort.getCurrentUserId()
 
-        val user = queryUserPort.queryUserById(friendId) ?: throw UserNotFoundException.EXCEPTION
+        val user = queryUserPort.queryUserById(followId) ?: throw UserNotFoundException.EXCEPTION
 
-        if (!queryFriendPort.existsFriendByUserIdAndFriendId(currentUserId, friendId)) {
-            throw FriendNotFoundException.EXCEPTION
+        if (!queryFollowPort.existsFollowByUserIdAndFollowId(currentUserId, followId)) {
+            throw FollowNotFoundException.EXCEPTION
         }
 
-        commandFriendPort.deleteFriendByUserIdAndFriendId(currentUserId, friendId)
+        commandFollowPort.deleteFollowByUserIdAndFollowId(currentUserId, followId)
 
         commandUserPort.saveUser(
             user.copy(
-                friendCount = user.friendCount.dec()
+                followCount = user.followCount.dec()
             )
         )
     }

@@ -3,16 +3,16 @@ package com.project.gatihaeyo.internal.user.service
 import com.project.gatihaeyo.global.annotation.BusinessService
 import com.project.gatihaeyo.internal.auth.port.SecurityPort
 import com.project.gatihaeyo.internal.user.exception.AlreadyFriendException
-import com.project.gatihaeyo.internal.user.exception.CannotMakeFriendAloneException
-import com.project.gatihaeyo.internal.user.model.Friend
-import com.project.gatihaeyo.internal.user.port.CommandFriendPort
-import com.project.gatihaeyo.internal.user.port.QueryFriendPort
+import com.project.gatihaeyo.internal.user.exception.CannotFollowAloneException
+import com.project.gatihaeyo.internal.user.model.Follow
+import com.project.gatihaeyo.internal.user.port.CommandFollowPort
+import com.project.gatihaeyo.internal.user.port.QueryFollowPort
 import java.util.UUID
 
 @BusinessService
 class AppendFollowService(
-    private val queryFriendPort: QueryFriendPort,
-    private val commandFriendPort: CommandFriendPort,
+    private val queryFollowPort: QueryFollowPort,
+    private val commandFollowPort: CommandFollowPort,
     private val securityPort: SecurityPort
 ) {
 
@@ -20,16 +20,16 @@ class AppendFollowService(
         val currentUserId = securityPort.getCurrentUserId()
 
         when {
-            currentUserId == friendId -> throw CannotMakeFriendAloneException.EXCEPTION
+            currentUserId == friendId -> throw CannotFollowAloneException.EXCEPTION
 
-            !queryFriendPort.existsFriendByUserIdAndFriendId(currentUserId, friendId)
+            !queryFollowPort.existsFollowByUserIdAndFollowId(currentUserId, friendId)
                 -> throw AlreadyFriendException.EXCEPTION
         }
 
-        commandFriendPort.saveFriend(
-            Friend(
+        commandFollowPort.saveFollow(
+            Follow(
                 userId = currentUserId,
-                friendId = friendId
+                followId = friendId
             )
         )
     }

@@ -33,7 +33,8 @@ class UserInfoService(
             nickname = user.nickname,
             email = user.email,
             profileImagePath = user.profileImagePath,
-            accounts = accounts
+            accounts = accounts,
+            followCount = user.followCount
         )
     }
 

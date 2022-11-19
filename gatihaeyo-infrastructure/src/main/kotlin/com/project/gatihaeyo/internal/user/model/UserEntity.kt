@@ -38,7 +38,7 @@ class UserEntity(
     val profileImagePath: String,
 
     @field:NotNull
-    val friendCount: Int,
+    val followCount: Int,
 
     val suspendAt: LocalDateTime?
 ) : BaseEntity(id)

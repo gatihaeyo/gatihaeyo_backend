@@ -20,7 +20,7 @@ data class User(
 
     val deleteAt: LocalDateTime? = null,
 
-    val friendCount: Int = 0
+    val followCount: Int = 0
 ) {
     companion object {
         @JvmField

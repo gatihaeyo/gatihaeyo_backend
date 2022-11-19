@@ -162,13 +162,13 @@ class UserController(
 
     @PutMapping("/follow/{user-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun appendFriend(@PathVariable("user-id") friendId: UUID) {
+    fun appendFollow(@PathVariable("user-id") friendId: UUID) {
         appendFollowService.execute(friendId)
     }
 
     @DeleteMapping("/follow/{user-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun removeFriend(@PathVariable("user-id") friendId: UUID) {
+    fun removeFollow(@PathVariable("user-id") friendId: UUID) {
         removeFollowService.execute(friendId)
     }
 
