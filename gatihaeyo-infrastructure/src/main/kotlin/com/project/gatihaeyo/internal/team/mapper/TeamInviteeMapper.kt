@@ -24,6 +24,7 @@ abstract class TeamInviteeMapper : GenericMapper<TeamInviteeEntity, TeamInvitee>
 
     @Mapping(target = "user", expression = "java(userJpaRepository.queryUserEntityById(d.getUserId()))")
     @Mapping(target = "team", expression = "java(teamJpaRepository.queryTeamEntityById(d.getTeamId()))")
+    @Mapping(target = "key", expression = "java(new TeamUserEntityId(d.getUserId(), d.getTeamId()))")
     abstract override fun toEntity(d: TeamInvitee): TeamInviteeEntity
 
 }
