@@ -2,6 +2,8 @@ package com.project.gatihaeyo.internal.user.service
 
 import com.project.gatihaeyo.global.annotation.BusinessService
 import com.project.gatihaeyo.internal.auth.port.SecurityPort
+import com.project.gatihaeyo.internal.notice.model.Notice
+import com.project.gatihaeyo.internal.notice.port.CommandNoticePort
 import com.project.gatihaeyo.internal.user.exception.AlreadyFriendException
 import com.project.gatihaeyo.internal.user.exception.CannotFollowAloneException
 import com.project.gatihaeyo.internal.user.exception.UserNotFoundException
@@ -18,6 +20,7 @@ class AppendFollowService(
     private val queryFollowPort: QueryFollowPort,
     private val commandUserPort: CommandUserPort,
     private val commandFollowPort: CommandFollowPort,
+    private val commandNoticePort: CommandNoticePort,
     private val securityPort: SecurityPort
 ) {
 
@@ -43,6 +46,13 @@ class AppendFollowService(
         commandUserPort.saveUser(
             user.copy(
                 followCount = user.followCount.inc()
+            )
+        )
+
+        commandNoticePort.saveNotice(
+            Notice(
+                userId = followId,
+                content = Notice.followMessage(user.nickname),
             )
         )
     }
