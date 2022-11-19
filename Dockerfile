@@ -1,11 +1,10 @@
-FROM openjdk:17 AS builder
+FROM openjdk:17-alpine AS builder
 
 ARG WORKSPACE=/home/gatihaeyo
 ARG BUILD_SPACE=${WORKSPACE}/gatihaeyo-infrastructure/build/libs
 
 WORKDIR ${WORKSPACE}
 COPY . .
-RUN chmod +x ./gradlew
 RUN ./gradlew clean bootJar
 
 WORKDIR ${BUILD_SPACE}
