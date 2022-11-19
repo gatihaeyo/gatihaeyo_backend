@@ -6,5 +6,6 @@ data class UserResponse(
     val id: UUID,
     val nickname: String,
     val email: String,
-    val profileImagePath: String
+    val profileImagePath: String,
+    val followCount: Int
  )

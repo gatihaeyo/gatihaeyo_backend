@@ -15,7 +15,8 @@ class SearchUserService(
                 id = it.id,
                 nickname = it.nickname,
                 email = it.email,
-                profileImagePath = it.profileImagePath
+                profileImagePath = it.profileImagePath,
+                followCount = it.followCount
             )
         }
     }

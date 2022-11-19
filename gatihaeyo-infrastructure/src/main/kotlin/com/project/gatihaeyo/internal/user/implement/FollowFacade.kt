@@ -28,11 +28,11 @@ class FollowFacade(
        )
     )!!
 
-    override fun deleteFollowByUserIdAndFollowId(userId: UUID, friendId: UUID) {
+    override fun deleteFollowByUserIdAndFollowId(userId: UUID, followId: UUID) {
         followJpaRepository.deleteById(
             FollowEntityId(
                 userId = userId,
-                friendId = friendId
+                followId = followId
             )
         )
     }
@@ -42,7 +42,7 @@ class FollowFacade(
             .select(userEntity)
             .from(followEntity)
             .join(userEntity)
-            .on(followEntity.friend.eq(userEntity))
+            .on(followEntity.follow.eq(userEntity))
             .where(followEntity.user.id.eq(userId))
             .fetch().map {
                 userMapper.toDomain(it)!!
@@ -53,7 +53,7 @@ class FollowFacade(
         return followJpaRepository.existsById(
             FollowEntityId(
                 userId = userId,
-                friendId = friendId
+                followId = friendId
             )
         )
     }

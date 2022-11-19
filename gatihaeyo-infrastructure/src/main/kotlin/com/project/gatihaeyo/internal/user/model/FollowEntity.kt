@@ -20,8 +20,8 @@ class FollowEntity(
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)", nullable = false)
     val user: UserEntity,
 
-    @MapsId("friendId")
+    @MapsId("followId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "friend_id", columnDefinition = "BINARY(16)", nullable = false)
-    val friend: UserEntity
+    @JoinColumn(name = "follow_id", columnDefinition = "BINARY(16)", nullable = false)
+    val follow: UserEntity
 ) : BaseTimeEntity()
