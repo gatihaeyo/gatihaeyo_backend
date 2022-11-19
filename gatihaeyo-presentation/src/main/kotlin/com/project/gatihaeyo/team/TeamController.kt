@@ -7,6 +7,7 @@ import com.project.gatihaeyo.internal.team.dto.InviteTeamDto
 import com.project.gatihaeyo.internal.team.dto.ReceiveTeamApplicantDto
 import com.project.gatihaeyo.internal.team.dto.RemoveTeamApplicantDto
 import com.project.gatihaeyo.internal.team.dto.ShowTeamListDto
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamApplicantResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamInvitationResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamListResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamMemberResponse
@@ -21,6 +22,7 @@ import com.project.gatihaeyo.internal.team.service.ReceiveTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.ReceiveTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.RemoveTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.RemoveTeamInvitationService
+import com.project.gatihaeyo.internal.team.service.ShowTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.ShowTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.ShowTeamListService
 import com.project.gatihaeyo.internal.team.service.ShowTeamMemberService
@@ -54,6 +56,7 @@ class TeamController(
     private val showTeamService: ShowTeamService,
     private val showTeamMemberService: ShowTeamMemberService,
     private val showTeamInvitationService: ShowTeamInvitationService,
+    private val showTeamApplicantService: ShowTeamApplicantService,
     private val applyTeamService: ApplyTeamService,
     private val inviteTeamService: InviteTeamService,
     private val listTopTeamService: ListTopTeamService,
@@ -95,6 +98,11 @@ class TeamController(
     @GetMapping("/invitation")
     fun showInvitationList(): ShowTeamInvitationResponse {
         return showTeamInvitationService.execute()
+    }
+
+    @GetMapping("/participation")
+    fun showApplicant() : ShowTeamApplicantResponse {
+        return showTeamApplicantService.execute()
     }
 
     @PostMapping
@@ -171,7 +179,7 @@ class TeamController(
         )
     }
 
-    @DeleteMapping("/dissolution/{team-id}")
+    @DeleteMapping("/{team-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun dissolution(@PathVariable("team-id") teamId: UUID) {
         teamDissipateService.execute(teamId)
