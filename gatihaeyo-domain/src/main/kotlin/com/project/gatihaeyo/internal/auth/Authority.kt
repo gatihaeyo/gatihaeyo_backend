@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal.auth.model
+package com.project.gatihaeyo.internal.auth
 
 enum class Authority {
 

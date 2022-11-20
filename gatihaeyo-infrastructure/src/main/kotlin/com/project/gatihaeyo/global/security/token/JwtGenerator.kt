@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.global.security.token
 
 import com.project.gatihaeyo.global.security.SecurityProperties
-import com.project.gatihaeyo.internal.auth.model.Authority
+import com.project.gatihaeyo.internal.auth.Authority
 import com.project.gatihaeyo.internal.auth.model.RefreshToken
 import com.project.gatihaeyo.internal.auth.port.CommandRefreshTokenPort
 import com.project.gatihaeyo.internal.auth.port.GenerateJwtPort

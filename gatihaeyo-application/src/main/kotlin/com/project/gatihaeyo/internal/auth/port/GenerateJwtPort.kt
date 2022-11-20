@@ -1,6 +1,6 @@
 package com.project.gatihaeyo.internal.auth.port
 
-import com.project.gatihaeyo.internal.auth.model.Authority
+import com.project.gatihaeyo.internal.auth.Authority
 import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
 import java.util.UUID
 

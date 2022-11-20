@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.internal.user.model
 
 import com.project.gatihaeyo.internal.BaseEntity
-import com.project.gatihaeyo.internal.auth.model.Authority
+import com.project.gatihaeyo.internal.auth.Authority
 import org.hibernate.validator.constraints.Length
 import org.jetbrains.annotations.NotNull
 import java.time.LocalDateTime

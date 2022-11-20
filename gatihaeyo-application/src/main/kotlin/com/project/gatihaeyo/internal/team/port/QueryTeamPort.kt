@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.internal.team.port
 
-import com.project.gatihaeyo.internal.Category
-import com.project.gatihaeyo.internal.Order
+import com.project.gatihaeyo.internal.team.Category
+import com.project.gatihaeyo.internal.team.Order
 import com.project.gatihaeyo.internal.team.model.Team
 import java.util.UUID
 

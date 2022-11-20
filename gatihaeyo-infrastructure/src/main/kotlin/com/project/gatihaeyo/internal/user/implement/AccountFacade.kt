@@ -1,6 +1,6 @@
 package com.project.gatihaeyo.internal.user.implement
 
-import com.project.gatihaeyo.internal.Category
+import com.project.gatihaeyo.internal.team.Category
 import com.project.gatihaeyo.internal.user.mapper.AccountMapper
 import com.project.gatihaeyo.internal.user.mapper.UserMapper
 import com.project.gatihaeyo.internal.user.model.AccountEntityId
