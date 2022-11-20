@@ -3,6 +3,7 @@ package com.project.gatihaeyo.global.security
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.project.gatihaeyo.global.config.FilterConfig
 import com.project.gatihaeyo.global.security.token.JwtParser
+import com.project.gatihaeyo.internal.auth.Authority.ROLE_ADMIN
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -52,6 +53,9 @@ class SecurityConfig(
             .antMatchers(HttpMethod.GET, "/teams").permitAll()
             .antMatchers(HttpMethod.GET, "/teams/{team-id}").permitAll()
             .antMatchers(HttpMethod.GET, "/teams/member/{team-id}").permitAll()
+
+             // reports
+            .antMatchers(HttpMethod.GET, "/reports").hasRole(ROLE_ADMIN.role)
 
             .anyRequest().authenticated()
 
