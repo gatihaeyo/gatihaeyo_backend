@@ -67,8 +67,8 @@ class SecurityConfig(
 
     @Bean
     protected fun corsConfigurationSource() : CorsConfigurationSource {
-        return UrlBasedCorsConfigurationSource().also {
-            it.registerCorsConfiguration(
+        return UrlBasedCorsConfigurationSource().apply {
+            registerCorsConfiguration(
                 "/**", CorsConfiguration().apply {
                     allowedOriginPatterns = listOf("*")
                     allowedMethods = listOf("*")
