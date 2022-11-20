@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository
 import java.util.UUID
 
 interface ReportJpaRepository : CrudRepository<ReportEntity, UUID> {
+
+    fun existsReportEntityByUserIdAndSuspectId(userId: UUID, suspectId: UUID): Boolean
 }

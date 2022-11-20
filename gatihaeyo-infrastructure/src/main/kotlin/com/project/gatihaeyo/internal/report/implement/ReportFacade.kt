@@ -9,6 +9,7 @@ import com.project.gatihaeyo.internal.report.port.QueryReportPort
 import com.project.gatihaeyo.internal.report.repository.ReportJpaRepository
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.stereotype.Component
+import java.util.UUID
 
 @Component
 class ReportFacade(
@@ -38,5 +39,11 @@ class ReportFacade(
                 reportMapper.toDomain(it)!!
             }
     }
+
+    override fun existsReportByUserIdAndReportUserId(userId: UUID, reportUserId: UUID) = reportJpaRepository
+        .existsReportEntityByUserIdAndSuspectId(
+            userId = userId,
+            suspectId = reportUserId
+        )
 
 }
