@@ -5,12 +5,11 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Positive
 
 data class ShowReportRequest(
-    @field:NotNull
-    val last: Long,
+    val last: Long?,
 
     @field:NotNull
     @field:Positive
-    val size: Int,
+    val size: Long,
 
     val type: RequestReportType?
 )
