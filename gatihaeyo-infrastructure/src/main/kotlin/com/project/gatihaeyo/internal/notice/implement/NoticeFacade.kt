@@ -2,6 +2,7 @@ package com.project.gatihaeyo.internal.notice.implement
 
 import com.project.gatihaeyo.internal.notice.mapper.NoticeMapper
 import com.project.gatihaeyo.internal.notice.model.Notice
+import com.project.gatihaeyo.internal.notice.model.QNoticeEntity.noticeEntity
 import com.project.gatihaeyo.internal.notice.port.CommandNoticePort
 import com.project.gatihaeyo.internal.notice.port.QueryNoticePort
 import com.project.gatihaeyo.internal.notice.repository.NoticeJpaRepository
@@ -26,7 +27,13 @@ class NoticeFacade(
     }
 
     override fun queryNoticeListByUserId(userId: UUID): List<Notice> {
-        return listOf()
+        return jpaQueryFactory.selectFrom(noticeEntity)
+            .where(noticeEntity.user.id.eq(userId))
+            .orderBy(noticeEntity.createdAt.desc())
+            .fetch()
+            .map {
+                noticeMapper.toDomain(it)!!
+            }
     }
 
     override fun existsNoticeById(id: UUID): Boolean {
