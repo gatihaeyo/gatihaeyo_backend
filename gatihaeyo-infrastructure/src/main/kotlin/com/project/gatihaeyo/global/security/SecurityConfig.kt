@@ -3,6 +3,7 @@ package com.project.gatihaeyo.global.security
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.project.gatihaeyo.global.config.FilterConfig
 import com.project.gatihaeyo.global.security.token.JwtParser
+import com.project.gatihaeyo.internal.auth.Authority.ROLE_ADMIN
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -11,6 +12,9 @@ import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.CorsConfigurationSource
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 class SecurityConfig(
@@ -21,7 +25,8 @@ class SecurityConfig(
     @Bean
     protected fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http
-            .cors().and()
+            .cors().configurationSource(corsConfigurationSource())
+            .and()
             .csrf().disable()
             .formLogin().disable()
 
@@ -49,6 +54,9 @@ class SecurityConfig(
             .antMatchers(HttpMethod.GET, "/teams/{team-id}").permitAll()
             .antMatchers(HttpMethod.GET, "/teams/member/{team-id}").permitAll()
 
+             // reports
+            .antMatchers(HttpMethod.GET, "/reports").hasRole(ROLE_ADMIN.role)
+
             .anyRequest().authenticated()
 
             .and()
@@ -60,4 +68,18 @@ class SecurityConfig(
 
     @Bean
     protected fun PasswordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
+
+    @Bean
+    protected fun corsConfigurationSource() : CorsConfigurationSource {
+        return UrlBasedCorsConfigurationSource().apply {
+            registerCorsConfiguration(
+                "/**", CorsConfiguration().apply {
+                    allowedOriginPatterns = listOf("*")
+                    allowedMethods = listOf("*")
+                    allowedHeaders = listOf("*")
+                    allowCredentials = true
+                }
+            )
+        }
+    }
 }

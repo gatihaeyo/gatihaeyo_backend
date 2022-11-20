@@ -1,6 +1,6 @@
 package com.project.gatihaeyo.internal.user.port
 
-import com.project.gatihaeyo.internal.Category
+import com.project.gatihaeyo.internal.team.Category
 import com.project.gatihaeyo.internal.user.model.Account
 import com.project.gatihaeyo.internal.user.model.User
 import java.util.UUID

@@ -1,4 +1,4 @@
-package com.project.gatihaeyo.internal
+package com.project.gatihaeyo.internal.team
 
 enum class Order {
 

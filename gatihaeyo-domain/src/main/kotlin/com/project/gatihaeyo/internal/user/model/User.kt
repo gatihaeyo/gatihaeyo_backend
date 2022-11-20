@@ -1,6 +1,6 @@
 package com.project.gatihaeyo.internal.user.model
 
-import com.project.gatihaeyo.internal.auth.model.Authority
+import com.project.gatihaeyo.internal.auth.Authority
 import java.lang.System.getenv
 import java.time.LocalDateTime
 import java.util.UUID

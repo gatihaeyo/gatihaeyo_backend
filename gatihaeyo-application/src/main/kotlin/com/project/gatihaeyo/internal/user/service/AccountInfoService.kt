@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.internal.user.service
 
 import com.project.gatihaeyo.global.annotation.ReadOnlyBusinessService
-import com.project.gatihaeyo.internal.Category
+import com.project.gatihaeyo.internal.team.Category
 import com.project.gatihaeyo.internal.OpenApiPort
 import com.project.gatihaeyo.internal.user.dto.AccountInfoDto
 import com.project.gatihaeyo.internal.user.dto.InfoRecordDto

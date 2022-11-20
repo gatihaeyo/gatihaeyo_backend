@@ -1,7 +1,7 @@
 package com.project.gatihaeyo.internal.team.implement
 
-import com.project.gatihaeyo.internal.Category
-import com.project.gatihaeyo.internal.Order
+import com.project.gatihaeyo.internal.team.Category
+import com.project.gatihaeyo.internal.team.Order
 import com.project.gatihaeyo.internal.team.mapper.TeamMapper
 import com.project.gatihaeyo.internal.team.model.QTeamEntity.teamEntity
 import com.project.gatihaeyo.internal.team.model.Team

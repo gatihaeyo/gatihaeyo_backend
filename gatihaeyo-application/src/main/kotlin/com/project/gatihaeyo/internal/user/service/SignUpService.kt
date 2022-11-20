@@ -6,7 +6,7 @@ import com.project.gatihaeyo.internal.auth.exception.AlreadyUsedEmailException
 import com.project.gatihaeyo.internal.auth.exception.AlreadyUsedNicknameException
 import com.project.gatihaeyo.internal.auth.exception.AuthCodeMismatchException
 import com.project.gatihaeyo.internal.auth.exception.UncertifiedEmailException
-import com.project.gatihaeyo.internal.auth.model.Authority
+import com.project.gatihaeyo.internal.auth.Authority
 import com.project.gatihaeyo.internal.auth.port.GenerateJwtPort
 import com.project.gatihaeyo.internal.auth.port.QueryAuthCodePort
 import com.project.gatihaeyo.internal.auth.port.SecurityPort
