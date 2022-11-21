@@ -9,5 +9,7 @@ interface QueryTeamMemberPort {
 
     fun queryTeamMemberListByTeamId(teamId: UUID): List<TeamMember>
 
+    fun queryTeamMemberListByUserId(userId: UUID): List<TeamMember>
+
     fun existsTeamMemberByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean
 }
