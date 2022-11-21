@@ -43,6 +43,9 @@ dependencies {
     // openfeign
     implementation(Dependencies.OPEN_FEIGN)
 
+    // socket
+    implementation(Dependencies.SOCKET_IO)
+
     // configuration
     annotationProcessor(Dependencies.CONFIGURATION_PROCESSOR)
 
