@@ -2,7 +2,6 @@ package com.project.gatihaeyo.user
 
 import com.project.gatihaeyo.internal.auth.dto.response.TokenResponse
 import com.project.gatihaeyo.internal.auth.service.ReissueTokenService
-import com.project.gatihaeyo.internal.team.service.ShowEmbeddedTeamService
 import com.project.gatihaeyo.internal.user.dto.AccountInfoDto
 import com.project.gatihaeyo.internal.user.dto.ChangeInfoDto
 import com.project.gatihaeyo.internal.user.dto.ChangePasswordDto
@@ -32,7 +31,6 @@ import com.project.gatihaeyo.user.dto.request.SavePUBGAccountRequest
 import com.project.gatihaeyo.user.dto.request.SignUpRequest
 import com.project.gatihaeyo.user.dto.request.WebAccountInfoRequest
 import com.project.gatihaeyo.user.dto.response.SearchUserResponse
-import com.project.gatihaeyo.user.dto.response.ShowEmbeddedTeamResponse
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -66,8 +64,7 @@ class UserController(
     private val searchUserService: SearchUserService,
     private val showFollowService: ShowFollowService,
     private val appendFollowService: AppendFollowService,
-    private val removeFollowService: RemoveFollowService,
-    private val showEmbeddedTeamService: ShowEmbeddedTeamService
+    private val removeFollowService: RemoveFollowService
 ) {
 
     @PostMapping("/signup")
@@ -173,13 +170,6 @@ class UserController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun removeFollow(@PathVariable("user-id") followId: UUID) {
         removeFollowService.execute(followId)
-    }
-
-    @GetMapping("/current")
-    fun showEmbeddedTeam() : ShowEmbeddedTeamResponse {
-        return ShowEmbeddedTeamResponse(
-            showEmbeddedTeamService.execute()
-        )
     }
 
 }

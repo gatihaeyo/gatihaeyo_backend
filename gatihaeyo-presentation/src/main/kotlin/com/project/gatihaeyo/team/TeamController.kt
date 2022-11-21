@@ -22,6 +22,7 @@ import com.project.gatihaeyo.internal.team.service.ReceiveTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.ReceiveTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.RemoveTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.RemoveTeamInvitationService
+import com.project.gatihaeyo.internal.team.service.ShowEmbeddedTeamService
 import com.project.gatihaeyo.internal.team.service.ShowTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.ShowTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.ShowTeamListService
@@ -36,6 +37,7 @@ import com.project.gatihaeyo.team.dto.request.InviteTeamRequest
 import com.project.gatihaeyo.team.dto.request.ReceiveTeamApplicantRequest
 import com.project.gatihaeyo.team.dto.request.RemoveTeamApplicantRequest
 import com.project.gatihaeyo.team.dto.request.ShowTeamListRequest
+import com.project.gatihaeyo.user.dto.response.ShowEmbeddedTeamResponse
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -68,7 +70,8 @@ class TeamController(
     private val teamDissipateService: TeamDissipateService,
     private val teamWithdrawalService: TeamWithdrawalService,
     private val removeTeamApplicantService: RemoveTeamApplicantService,
-    private val removeTeamInvitationService: RemoveTeamInvitationService
+    private val removeTeamInvitationService: RemoveTeamInvitationService,
+    private val showEmbeddedTeamService: ShowEmbeddedTeamService
 ) {
 
     @GetMapping
@@ -206,6 +209,13 @@ class TeamController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun removeInvitation(@PathVariable("team-id") teamId: UUID) {
         removeTeamInvitationService.execute(teamId)
+    }
+
+    @GetMapping("/current")
+    fun showEmbeddedTeam() : ShowEmbeddedTeamResponse {
+        return ShowEmbeddedTeamResponse(
+            showEmbeddedTeamService.execute()
+        )
     }
 
 }
