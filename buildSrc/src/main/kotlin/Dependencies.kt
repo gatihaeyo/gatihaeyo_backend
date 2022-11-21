@@ -49,6 +49,9 @@ object Dependencies {
     // openfeign
     const val OPEN_FEIGN = "org.springframework.cloud:spring-cloud-starter-openfeign:${DependencyVersions.OPEN_FEIGN_VERSION}"
 
+    // socket
+    const val SOCKET_IO = "com.corundumstudio.socketio:netty-socketio:${DependencyVersions.SOCKET_IO_VERSION}"
+
     // test
     const val SPRING_TEST = "org.springframework.boot:spring-boot-starter-test:${PluginVersions.SPRING_BOOT_VERSION}"
 }

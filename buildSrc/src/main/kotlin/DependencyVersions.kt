@@ -9,4 +9,5 @@ object DependencyVersions {
     const val QUERYDSL_VERSION = "5.0.0"
     const val BYTE_BUDDY_VERSION = "1.12.18"
     const val OPEN_FEIGN_VERSION = "3.1.5"
+    const val SOCKET_IO_VERSION = "1.7.22"
 }
