@@ -6,7 +6,7 @@ import java.util.UUID
 
 interface TeamMemberJpaRepository : CrudRepository<TeamMemberEntity, UUID> {
 
-    fun queryTeamMemberEntityByUserId(userId: UUID): TeamMemberEntity?
+    fun queryTeamMemberEntitiesByUserId(userId: UUID): List<TeamMemberEntity>
 
     fun queryTeamMemberEntitiesByTeamId(teamId: UUID): List<TeamMemberEntity>
 

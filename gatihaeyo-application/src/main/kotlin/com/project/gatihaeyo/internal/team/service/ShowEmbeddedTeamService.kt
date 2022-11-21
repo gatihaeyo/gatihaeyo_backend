@@ -17,7 +17,7 @@ class ShowEmbeddedTeamService(
     fun execute() : List<ShowTeamResponse> {
         val currentUserId = securityPort.getCurrentUserId()
 
-        val list = queryTeamMemberPort.queryTeamMemberListByUserId(currentUserId)
+        val list = queryTeamMemberPort.queryTeamMemberByUserId(currentUserId)
             .map {
                 queryTeamPort.queryTeamById(it.teamId) ?: throw TeamNotFoundException.EXCEPTION
             }
