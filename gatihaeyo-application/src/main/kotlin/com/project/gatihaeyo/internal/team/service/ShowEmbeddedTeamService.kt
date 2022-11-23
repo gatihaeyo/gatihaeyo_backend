@@ -17,23 +17,21 @@ class ShowEmbeddedTeamService(
     fun execute() : List<ShowTeamResponse> {
         val currentUserId = securityPort.getCurrentUserId()
 
-        val list = queryTeamMemberPort.queryTeamMemberByUserId(currentUserId)
+        return queryTeamMemberPort.queryTeamMemberByUserId(currentUserId)
             .map {
-                queryTeamPort.queryTeamById(it.teamId) ?: throw TeamNotFoundException.EXCEPTION
-            }
+                val team = queryTeamPort.queryTeamById(it.teamId) ?: throw TeamNotFoundException.EXCEPTION
 
-        return list.map {
-            ShowTeamResponse(
-                id = it.id,
-                master = it.master,
-                title = it.title,
-                content = it.content,
-                category = it.category,
-                personnel = it.personnel,
-                currentPersonnel = it.currentPersonnel,
-                applicantPersonnel = it.applicantPersonnel,
-                updateAt = it.updateAt
-            )
-        }
+                ShowTeamResponse(
+                    id = team.id,
+                    master = team.master,
+                    title = team.title,
+                    content = team.content,
+                    category = team.category,
+                    personnel = team.personnel,
+                    currentPersonnel = team.currentPersonnel,
+                    applicantPersonnel = team.applicantPersonnel,
+                    updateAt = team.updateAt
+                )
+            }
     }
 }

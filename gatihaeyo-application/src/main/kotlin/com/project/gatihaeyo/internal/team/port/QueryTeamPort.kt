@@ -11,5 +11,7 @@ interface QueryTeamPort {
 
     fun existsTeamById(id: UUID) : Boolean
 
-    fun queryTeamList(size: Int, page: Long, order: Order, category: Category): List<Team>
+    fun searchTeamByKeyword(keyword: String, order: Order): List<Team>
+
+    fun queryTeamPage(size: Int, page: Long, order: Order, category: Category): List<Team>
 }
