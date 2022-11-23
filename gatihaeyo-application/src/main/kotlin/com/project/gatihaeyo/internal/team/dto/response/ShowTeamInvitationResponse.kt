@@ -5,9 +5,9 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 data class ShowTeamInvitationResponse(
-    val list: List<ShowTeamInvitationElement>
+    val list: List<TeamInvitationElement>
 ) {
-    data class ShowTeamInvitationElement(
+    data class TeamInvitationElement(
         val id: UUID,
         val title: String,
         val category: Category,
