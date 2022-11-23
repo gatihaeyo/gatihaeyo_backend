@@ -9,6 +9,7 @@ import com.project.gatihaeyo.internal.message.implement.MessageFacade
 import com.project.gatihaeyo.internal.message.model.Message
 import com.project.gatihaeyo.internal.socket.dto.ChatMessageDto
 import com.project.gatihaeyo.internal.socket.dto.JoinRoomDto
+import com.project.gatihaeyo.internal.socket.exception.MessageNullException
 import com.project.gatihaeyo.internal.team.exception.TeamMemberNotFoundException
 import com.project.gatihaeyo.internal.team.implement.TeamMemberFacade
 import org.springframework.stereotype.Component
@@ -30,6 +31,10 @@ class SocketEventHandler(
 
     private fun onMessage() : DataListener<ChatMessageDto> {
         return (DataListener { client, data, _ ->
+            if (data.token == null || data.message == null || data.roomId == null) {
+                throw MessageNullException.EXCEPTION
+            }
+
             val userId = UUID.fromString(
                 jwtParser.getAuthentication(data.token).name
             )
@@ -55,6 +60,10 @@ class SocketEventHandler(
 
     private fun onJoin() : DataListener<JoinRoomDto> {
         return (DataListener { client, data, _ ->
+            if (data.token == null || data.roomId == null) {
+                throw MessageNullException.EXCEPTION
+            }
+
             val userId = UUID.fromString(
                 jwtParser.getAuthentication(data.token).name
             )

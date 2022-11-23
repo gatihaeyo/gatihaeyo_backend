@@ -6,11 +6,12 @@ import com.project.gatihaeyo.internal.team.dto.ExpulsionTeamDto
 import com.project.gatihaeyo.internal.team.dto.InviteTeamDto
 import com.project.gatihaeyo.internal.team.dto.ReceiveTeamApplicantDto
 import com.project.gatihaeyo.internal.team.dto.RemoveTeamApplicantDto
+import com.project.gatihaeyo.internal.team.dto.SearchTeamDto
 import com.project.gatihaeyo.internal.team.dto.ShowTeamListDto
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamApplicantResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamInvitationResponse
-import com.project.gatihaeyo.internal.team.dto.response.ShowTeamListResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamMemberResponse
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamPageResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamResponse
 import com.project.gatihaeyo.internal.team.service.ApplyTeamService
 import com.project.gatihaeyo.internal.team.service.CreateTeamService
@@ -22,11 +23,12 @@ import com.project.gatihaeyo.internal.team.service.ReceiveTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.ReceiveTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.RemoveTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.RemoveTeamInvitationService
+import com.project.gatihaeyo.internal.team.service.SearchTeamService
 import com.project.gatihaeyo.internal.team.service.ShowEmbeddedTeamService
 import com.project.gatihaeyo.internal.team.service.ShowTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.ShowTeamInvitationService
-import com.project.gatihaeyo.internal.team.service.ShowTeamListService
 import com.project.gatihaeyo.internal.team.service.ShowTeamMemberService
+import com.project.gatihaeyo.internal.team.service.ShowTeamPageService
 import com.project.gatihaeyo.internal.team.service.ShowTeamService
 import com.project.gatihaeyo.internal.team.service.TeamDissipateService
 import com.project.gatihaeyo.internal.team.service.TeamWithdrawalService
@@ -36,8 +38,9 @@ import com.project.gatihaeyo.team.dto.request.ExpulsionTeamRequest
 import com.project.gatihaeyo.team.dto.request.InviteTeamRequest
 import com.project.gatihaeyo.team.dto.request.ReceiveTeamApplicantRequest
 import com.project.gatihaeyo.team.dto.request.RemoveTeamApplicantRequest
-import com.project.gatihaeyo.team.dto.request.ShowTeamListRequest
-import com.project.gatihaeyo.user.dto.response.ShowEmbeddedTeamResponse
+import com.project.gatihaeyo.team.dto.request.SearchTeamRequest
+import com.project.gatihaeyo.team.dto.request.ShowTeamPageRequest
+import com.project.gatihaeyo.team.dto.response.ShowTeamListResponse
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -62,7 +65,7 @@ class TeamController(
     private val applyTeamService: ApplyTeamService,
     private val inviteTeamService: InviteTeamService,
     private val listTopTeamService: ListTopTeamService,
-    private val showTeamListService: ShowTeamListService,
+    private val showTeamPageService: ShowTeamPageService,
     private val delegateTeamService: DelegateTeamService,
     private val receiveTeamApplicantService: ReceiveTeamApplicantService,
     private val receiveTeamInvitationService: ReceiveTeamInvitationService,
@@ -71,14 +74,15 @@ class TeamController(
     private val teamWithdrawalService: TeamWithdrawalService,
     private val removeTeamApplicantService: RemoveTeamApplicantService,
     private val removeTeamInvitationService: RemoveTeamInvitationService,
-    private val showEmbeddedTeamService: ShowEmbeddedTeamService
+    private val showEmbeddedTeamService: ShowEmbeddedTeamService,
+    private val searchTeamService: SearchTeamService
 ) {
 
     @GetMapping
-    fun showTeamList(@Valid request: ShowTeamListRequest): ShowTeamListResponse {
+    fun showTeamList(@Valid request: ShowTeamPageRequest): ShowTeamPageResponse {
         val (size, category, order, page) = request
 
-        return showTeamListService.execute(
+        return showTeamPageService.execute(
             ShowTeamListDto(
                 size = size,
                 page = page - 1,
@@ -212,9 +216,21 @@ class TeamController(
     }
 
     @GetMapping("/current")
-    fun showEmbeddedTeam() : ShowEmbeddedTeamResponse {
-        return ShowEmbeddedTeamResponse(
+    fun showEmbeddedTeam() : ShowTeamListResponse {
+        return ShowTeamListResponse(
             showEmbeddedTeamService.execute()
+        )
+    }
+
+    @GetMapping("/search")
+    fun searchTeam(@Valid request: SearchTeamRequest) : ShowTeamListResponse {
+        return ShowTeamListResponse(
+            searchTeamService.execute(
+                SearchTeamDto(
+                    keyword = request.keyword,
+                    order = request.order
+                )
+            )
         )
     }
 
