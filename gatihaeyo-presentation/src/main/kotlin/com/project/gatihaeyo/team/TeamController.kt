@@ -18,7 +18,6 @@ import com.project.gatihaeyo.internal.team.service.CreateTeamService
 import com.project.gatihaeyo.internal.team.service.DelegateTeamService
 import com.project.gatihaeyo.internal.team.service.ExpulsionTeamService
 import com.project.gatihaeyo.internal.team.service.InviteTeamService
-import com.project.gatihaeyo.internal.team.service.ListTopTeamService
 import com.project.gatihaeyo.internal.team.service.ReceiveTeamApplicantService
 import com.project.gatihaeyo.internal.team.service.ReceiveTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.RemoveTeamApplicantService
@@ -32,6 +31,7 @@ import com.project.gatihaeyo.internal.team.service.ShowTeamPageService
 import com.project.gatihaeyo.internal.team.service.ShowTeamService
 import com.project.gatihaeyo.internal.team.service.TeamDissipateService
 import com.project.gatihaeyo.internal.team.service.TeamWithdrawalService
+import com.project.gatihaeyo.internal.team.service.UpdateTopTeamService
 import com.project.gatihaeyo.team.dto.request.CreateTeamRequest
 import com.project.gatihaeyo.team.dto.request.DelegateTeamRequest
 import com.project.gatihaeyo.team.dto.request.ExpulsionTeamRequest
@@ -64,7 +64,7 @@ class TeamController(
     private val showTeamApplicantService: ShowTeamApplicantService,
     private val applyTeamService: ApplyTeamService,
     private val inviteTeamService: InviteTeamService,
-    private val listTopTeamService: ListTopTeamService,
+    private val updateTopTeamService: UpdateTopTeamService,
     private val showTeamPageService: ShowTeamPageService,
     private val delegateTeamService: DelegateTeamService,
     private val receiveTeamApplicantService: ReceiveTeamApplicantService,
@@ -107,17 +107,17 @@ class TeamController(
         return showTeamInvitationService.execute()
     }
 
-    @GetMapping("/participation")
+    @GetMapping("/applicant")
     fun showApplicant() : ShowTeamApplicantResponse {
         return showTeamApplicantService.execute()
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createTeam(@Valid @RequestBody request: CreateTeamRequest) {
+    fun createTeam(@Valid @RequestBody request: CreateTeamRequest) : ShowTeamResponse {
         val (title, content, category, personnel) = request
 
-        createTeamService.execute(
+        return createTeamService.execute(
             CreateTeamDto(
                 title = title,
                 content = content,
@@ -140,11 +140,11 @@ class TeamController(
 
     @PostMapping("/list-top/{team-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun listTopTeam(@PathVariable("team-id") teamId: UUID) {
-        listTopTeamService.execute(teamId)
+    fun updateTopTeam(@PathVariable("team-id") teamId: UUID) {
+        updateTopTeamService.execute(teamId)
     }
 
-    @PostMapping("/participation/{team-id}")
+    @PostMapping("/applicant/{team-id}")
     @ResponseStatus(HttpStatus.CREATED)
     fun applyTeam(@PathVariable("team-id") teamId: UUID) {
         applyTeamService.execute(teamId)
@@ -160,7 +160,7 @@ class TeamController(
         )
     }
 
-    @PutMapping("/participation")
+    @PutMapping("/applicant")
     fun receiveTeamApplication(@Valid @RequestBody request: ReceiveTeamApplicantRequest) {
         receiveTeamApplicantService.execute(
             ReceiveTeamApplicantDto(
@@ -198,7 +198,7 @@ class TeamController(
         teamWithdrawalService.execute(teamId)
     }
 
-    @DeleteMapping("/participation/removal")
+    @DeleteMapping("/applicant/removal")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun removeApplicant(@Valid request: RemoveTeamApplicantRequest) {
         removeTeamApplicantService.execute(
