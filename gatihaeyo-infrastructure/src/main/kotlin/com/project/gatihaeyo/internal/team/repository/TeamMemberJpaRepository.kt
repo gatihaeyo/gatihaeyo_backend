@@ -1,14 +1,11 @@
 package com.project.gatihaeyo.internal.team.repository
 
 import com.project.gatihaeyo.internal.team.model.TeamMemberEntity
+import com.project.gatihaeyo.internal.team.model.TeamUserEntityId
 import org.springframework.data.repository.CrudRepository
 import java.util.UUID
 
-interface TeamMemberJpaRepository : CrudRepository<TeamMemberEntity, UUID> {
-
-    fun queryTeamMemberEntitiesByUserId(userId: UUID): List<TeamMemberEntity>
-
-    fun queryTeamMemberEntitiesByTeamId(teamId: UUID): List<TeamMemberEntity>
+interface TeamMemberJpaRepository : CrudRepository<TeamMemberEntity, TeamUserEntityId> {
 
     fun existsTeamMemberEntityByUserIdAndTeamId(userId: UUID, teamId: UUID): Boolean
 

@@ -39,7 +39,18 @@ class TeamFacade(
         return teamJpaRepository.existsById(id)
     }
 
-    override fun queryTeamList(size: Int, page: Long, order: Order, category: Category): List<Team> {
+    override fun searchTeamByKeyword(keyword: String, order: Order): List<Team> {
+        return jpaQueryFactory
+            .selectFrom(teamEntity)
+            .where(teamEntity.currentPersonnel.ne(teamEntity.personnel))
+            .orderTeam(order)
+            .fetch()
+            .map {
+                teamMapper.toDomain(it)!!
+            }
+    }
+
+    override fun queryTeamPage(size: Int, page: Long, order: Order, category: Category): List<Team> {
         return jpaQueryFactory
             .selectFrom(teamEntity)
             .where(
