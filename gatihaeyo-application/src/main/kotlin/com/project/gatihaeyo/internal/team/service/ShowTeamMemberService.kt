@@ -22,7 +22,7 @@ class ShowTeamMemberService(
 
         return ShowTeamMemberResponse(
             members.map {
-                ShowTeamMemberResponse.ShowTeamMemberElement(
+                ShowTeamMemberResponse.TeamMemberElement(
                     id = it.id,
                     nickname = it.nickname,
                     profileImagePath = it.profileImagePath

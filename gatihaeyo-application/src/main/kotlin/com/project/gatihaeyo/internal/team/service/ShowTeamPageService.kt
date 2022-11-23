@@ -22,7 +22,7 @@ class ShowTeamPageService(
 
         return ShowTeamPageResponse(
             list.map {
-                ShowTeamPageResponse.ShowTeamListElement(
+                ShowTeamPageResponse.TeamPageElement(
                     id = it.id,
                     master = it.master,
                     category = it.category,

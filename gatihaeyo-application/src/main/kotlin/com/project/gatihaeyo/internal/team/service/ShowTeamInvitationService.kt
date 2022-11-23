@@ -22,7 +22,7 @@ class ShowTeamInvitationService(
         return ShowTeamInvitationResponse(
             list.map {
                 queryTeamPort.queryTeamById(it.teamId)?.let { team ->
-                    ShowTeamInvitationResponse.ShowTeamInvitationElement(
+                    ShowTeamInvitationResponse.TeamInvitationElement(
                         id = team.id,
                         category = team.category,
                         title = team.title,

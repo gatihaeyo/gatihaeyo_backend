@@ -14,19 +14,17 @@ class ShowTeamService(
     fun execute(teamId: UUID): ShowTeamResponse {
         val team = queryTeamPort.queryTeamById(teamId) ?: throw TeamNotFoundException.EXCEPTION
 
-        return team.let {
-            ShowTeamResponse(
-                id = it.id,
-                master = it.master,
-                category = it.category,
-                title = it.title,
-                content = it.content,
-                personnel = it.personnel,
-                currentPersonnel = it.currentPersonnel,
-                applicantPersonnel = it.applicantPersonnel,
-                updateAt = it.updateAt
-            )
-        }
+        return ShowTeamResponse(
+            id = team.id,
+            master = team.master,
+            category = team.category,
+            title = team.title,
+            content = team.content,
+            personnel = team.personnel,
+            currentPersonnel = team.currentPersonnel,
+            applicantPersonnel = team.applicantPersonnel,
+            updateAt = team.updateAt
+        )
     }
 
 }

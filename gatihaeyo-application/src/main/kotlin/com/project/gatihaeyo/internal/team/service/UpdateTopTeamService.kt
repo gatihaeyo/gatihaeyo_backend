@@ -14,7 +14,7 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 @BusinessService
-class ListTopTeamService(
+class UpdateTopTeamService(
     private val queryTeamPort: QueryTeamPort,
     private val queryTeamDelayPort: QueryTeamDelayPort,
     private val commandTeamPort: CommandTeamPort,
