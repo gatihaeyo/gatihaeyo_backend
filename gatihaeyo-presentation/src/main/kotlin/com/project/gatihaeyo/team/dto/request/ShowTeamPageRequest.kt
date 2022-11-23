@@ -5,7 +5,7 @@ import com.project.gatihaeyo.internal.team.OrderType
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Positive
 
-data class ShowTeamListRequest(
+data class ShowTeamPageRequest(
 
     @field:NotNull
     val size: Int = 8,

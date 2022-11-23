@@ -4,7 +4,7 @@ import com.project.gatihaeyo.internal.team.Category
 import java.time.LocalDateTime
 import java.util.UUID
 
-data class ShowTeamListResponse(
+data class ShowTeamPageResponse(
     val list: List<ShowTeamListElement>
 ) {
     data class ShowTeamListElement(

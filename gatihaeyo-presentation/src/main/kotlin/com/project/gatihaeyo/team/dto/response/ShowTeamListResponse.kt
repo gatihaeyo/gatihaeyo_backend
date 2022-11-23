@@ -1,7 +1,7 @@
-package com.project.gatihaeyo.user.dto.response
+package com.project.gatihaeyo.team.dto.response
 
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamResponse
 
-data class ShowEmbeddedTeamResponse(
+data class ShowTeamListResponse(
     val list: List<ShowTeamResponse>
 )
