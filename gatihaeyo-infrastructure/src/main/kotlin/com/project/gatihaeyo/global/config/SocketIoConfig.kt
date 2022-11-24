@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration
 class SocketIoConfig {
 
     @Bean
-    protected fun socketIOServer() : SocketIOServer {
+    fun socketIOServer() : SocketIOServer {
         val configuration = com.corundumstudio.socketio.Configuration().apply {
             socketConfig = SocketConfig()
             port = 10027
