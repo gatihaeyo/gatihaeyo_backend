@@ -1,6 +1,9 @@
 server:
   port: 8080
   shutdown: graceful
+  socket:
+    host: ${SOCKET_HOST:localhost}
+    port: ${SOCKET_PORT:10027}
 
 spring:
   datasource:

@@ -11,6 +11,8 @@ interface TeamApplicantJpaRepository : CrudRepository<TeamApplicantEntity, TeamU
 
     fun queryTeamApplicantEntitiesByUserId(userId: UUID): List<TeamApplicantEntity>
 
+    fun queryTeamApplicantEntitiesByTeamId(teamID: UUID): List<TeamApplicantEntity>
+
     fun deleteTeamApplicantEntitiesByTeamId(teamId: UUID)
 
 }

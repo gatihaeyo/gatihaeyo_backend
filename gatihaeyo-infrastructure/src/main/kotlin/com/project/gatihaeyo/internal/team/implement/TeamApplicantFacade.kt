@@ -1,11 +1,11 @@
 package com.project.gatihaeyo.internal.team.implement
 
 import com.project.gatihaeyo.internal.team.mapper.TeamApplicantMapper
-import com.project.gatihaeyo.internal.team.model.TeamUserEntityId
-import com.project.gatihaeyo.internal.team.repository.TeamApplicantJpaRepository
 import com.project.gatihaeyo.internal.team.model.TeamApplicant
+import com.project.gatihaeyo.internal.team.model.TeamUserEntityId
 import com.project.gatihaeyo.internal.team.port.CommandTeamApplicantPort
 import com.project.gatihaeyo.internal.team.port.QueryTeamApplicantPort
+import com.project.gatihaeyo.internal.team.repository.TeamApplicantJpaRepository
 import org.springframework.stereotype.Component
 import java.util.UUID
 
@@ -43,6 +43,13 @@ class TeamApplicantFacade(
                 )
             )
         )
+
+    override fun queryTeamApplicantByTeamId(teamId: UUID): List<TeamApplicant> {
+        return teamApplicantJpaRepository.queryTeamApplicantEntitiesByTeamId(teamId)
+            .map {
+                teamApplicantMapper.toDomain(it)!!
+            }
+    }
 
     override fun queryTeamApplicantListByUserId(userId: UUID): List<TeamApplicant> {
         return teamApplicantJpaRepository.queryTeamApplicantEntitiesByUserId(userId)

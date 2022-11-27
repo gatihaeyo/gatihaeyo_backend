@@ -9,6 +9,7 @@ import com.project.gatihaeyo.internal.team.dto.RemoveTeamApplicantDto
 import com.project.gatihaeyo.internal.team.dto.SearchTeamDto
 import com.project.gatihaeyo.internal.team.dto.ShowTeamListDto
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamApplicantResponse
+import com.project.gatihaeyo.internal.team.dto.response.ShowTeamApplyResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamInvitationResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamMemberResponse
 import com.project.gatihaeyo.internal.team.dto.response.ShowTeamPageResponse
@@ -25,6 +26,7 @@ import com.project.gatihaeyo.internal.team.service.RemoveTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.SearchTeamService
 import com.project.gatihaeyo.internal.team.service.ShowEmbeddedTeamService
 import com.project.gatihaeyo.internal.team.service.ShowTeamApplicantService
+import com.project.gatihaeyo.internal.team.service.ShowTeamApplyService
 import com.project.gatihaeyo.internal.team.service.ShowTeamInvitationService
 import com.project.gatihaeyo.internal.team.service.ShowTeamMemberService
 import com.project.gatihaeyo.internal.team.service.ShowTeamPageService
@@ -61,6 +63,7 @@ class TeamController(
     private val showTeamService: ShowTeamService,
     private val showTeamMemberService: ShowTeamMemberService,
     private val showTeamInvitationService: ShowTeamInvitationService,
+    private val showTeamApplyService: ShowTeamApplyService,
     private val showTeamApplicantService: ShowTeamApplicantService,
     private val applyTeamService: ApplyTeamService,
     private val inviteTeamService: InviteTeamService,
@@ -108,8 +111,13 @@ class TeamController(
     }
 
     @GetMapping("/applicant")
-    fun showApplicant() : ShowTeamApplicantResponse {
-        return showTeamApplicantService.execute()
+    fun showTeamApply() : ShowTeamApplyResponse {
+        return showTeamApplyService.execute()
+    }
+
+    @GetMapping("/applicant/{team-id}")
+    fun showApplicant(@PathVariable("team-id") teamId: UUID) : ShowTeamApplicantResponse {
+        return showTeamApplicantService.execute(teamId)
     }
 
     @PostMapping

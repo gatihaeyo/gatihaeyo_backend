@@ -14,7 +14,6 @@ class SocketIoConfig {
         val configuration = com.corundumstudio.socketio.Configuration().apply {
             socketConfig = SocketConfig()
             port = 10027
-            exceptionListener
             origin = "*"
             exceptionListener = DefaultExceptionListener()
         }

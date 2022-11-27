@@ -16,17 +16,15 @@ import java.util.UUID
 
 @Component
 class SocketEventHandler(
-    private val socketIOServer: SocketIOServer,
+    socketIOServer: SocketIOServer,
     private val teamMemberFacade: TeamMemberFacade,
     private val messageFacade: MessageFacade
 ) {
 
-    private val socketIONamespace: SocketIONamespace by lazy {
-        socketIOServer.addNamespace("/chat").apply {
-            addEventListener("send", ChatMessageDto::class.java, onMessage())
-            addEventListener("join", UUID::class.java, onJoin())
-            addEventListener("leave", UUID::class.java, onLeave())
-        }
+    private val socketIONamespace: SocketIONamespace = socketIOServer.addNamespace("/chat").apply {
+        addEventListener("send", ChatMessageDto::class.java, onMessage())
+        addEventListener("join", UUID::class.java, onJoin())
+        addEventListener("leave", UUID::class.java, onLeave())
     }
 
     private fun onMessage() : DataListener<ChatMessageDto> {
